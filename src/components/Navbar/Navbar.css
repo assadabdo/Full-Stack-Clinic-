@@ -1,0 +1,252 @@
+/* ============================================
+   NAVBAR STYLES
+   Sticky glass-morphism navbar with responsive design
+   ============================================ */
+
+/* Base navbar styles */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: var(--spacing-md) 0;
+  transition: all var(--transition-normal);
+  background: transparent;
+}
+
+/* ============================================
+   GLASS MORPHISM EFFECT
+   Applied when scrolled
+   ============================================ */
+.navbar-scrolled {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-md);
+  padding: var(--spacing-sm) 0;
+}
+
+/* Navbar container */
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-lg);
+}
+
+/* ============================================
+   LOGO STYLES
+   ============================================ */
+.navbar-logo {
+  flex-shrink: 2;
+}
+
+.logo-placeholder {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+.logo-placeholder img{
+  width: 50px;
+  height: 50px;
+  background: inherit;
+}
+
+.logo-text {
+  font-family: 'Cairo', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: transparent;
+ background: linear-gradient(135deg, #000205, #a1ff3b);
+  background-clip: text;
+}
+
+/* ============================================
+   DESKTOP NAVIGATION
+   ============================================ */
+.navbar-nav {
+  display: flex;
+  list-style: none;
+  gap: var(--spacing-lg);
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-nav-item {
+  position: relative;
+}
+
+.navbar-nav-link {
+  font-family: 'Cairo', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+  position: relative;
+}
+
+.navbar-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  right: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-green);
+  transition: width var(--transition-normal);
+}
+
+.navbar-nav-link:hover {
+  color: var(--color-green);
+}
+
+.navbar-nav-link:hover::after {
+  width: 100%;
+}
+
+/* ============================================
+   AUTH BUTTON
+   ============================================ */
+.navbar-auth {
+  flex-shrink: 0;
+}
+
+/* ============================================
+   MOBILE MENU TOGGLE (HAMBURGER)
+   ============================================ */
+.navbar-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.hamburger-line {
+  width: 25px;
+  height: 3px;
+  background-color: var(--color-navy);
+  border-radius: 2px;
+  transition: all var(--transition-normal);
+}
+
+/* Hamburger animation when active */
+.navbar-toggle.active .hamburger-line:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.navbar-toggle.active .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar-toggle.active .hamburger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* ============================================
+   MOBILE MENU
+   ============================================ */
+.navbar-mobile-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-lg);
+  padding: var(--spacing-lg);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all var(--transition-normal);
+}
+
+.navbar-mobile-menu.open {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.navbar-mobile-nav {
+  list-style: none;
+  margin: 0 0 var(--spacing-lg) 0;
+  padding: 0;
+}
+
+.navbar-mobile-nav-item {
+  margin-bottom: var(--spacing-md);
+}
+
+.navbar-mobile-nav-link {
+  font-family: 'Cairo', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-text);
+  text-decoration: none;
+  display: block;
+  padding: var(--spacing-sm) 0;
+  transition: color var(--transition-fast);
+}
+
+.navbar-mobile-nav-link:hover {
+  color: var(--color-green);
+}
+
+.navbar-mobile-auth {
+  display: flex;
+  justify-content: center;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 1024px) {
+  .navbar-nav {
+    gap: var(--spacing-md);
+  }
+  
+  .navbar-nav-link {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Hide desktop navigation */
+  .navbar-nav {
+    display: none;
+  }
+  
+  /* Show mobile toggle */
+  .navbar-toggle {
+    display: flex;
+  }
+  
+  /* Adjust auth button on mobile */
+  .navbar-auth {
+    display: none;
+  }
+  
+  /* Logo size adjustment */
+  .logo-text {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-container {
+    gap: var(--spacing-md);
+  }
+  
+  .logo-text {
+    font-size: 1.125rem;
+  }
+}

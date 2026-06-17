@@ -1,0 +1,104 @@
+/* ============================================
+   BUTTON STYLES
+   Primary and secondary button variants
+   ============================================ */
+
+/* Base button styles */
+.btn {
+  font-family: 'Cairo', sans-serif;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+}
+
+/* Button disabled state */
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ============================================
+   PRIMARY VARIANT - Navy fill
+   ============================================ */
+.btn-primary {
+  background-color: var(--color-navy);
+  color: var(--color-white);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-size: 1rem;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--color-accent-blue);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* ============================================
+   SECONDARY VARIANT - Green outline
+   ============================================ */
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-green);
+  border: 2px solid var(--color-green);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-size: 1rem;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background-color: var(--color-green);
+  color: var(--color-white);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-secondary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* ============================================
+   SIZE VARIANTS
+   ============================================ */
+
+/* Small size */
+.btn-small {
+  padding: var(--spacing-xs) var(--spacing-md);
+  font-size: 0.875rem;
+}
+
+/* Medium size (default) */
+.btn-medium {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-size: 1rem;
+}
+
+/* Large size */
+.btn-large {
+  padding: var(--spacing-md) var(--spacing-xl);
+  font-size: 1.125rem;
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+@media (max-width: 768px) {
+  .btn {
+    width: 100%;
+  }
+  
+  .btn-small,
+  .btn-medium,
+  .btn-large {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+}
