@@ -1,0 +1,97 @@
+.landing {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    height: 80%;
+}
+.content{
+
+
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    color: var(--color-white);
+
+
+}
+.content .hero{
+        background-color: #547b90c2;
+    width: fit-content;
+    border-radius: 30px;
+    /* color: #648E5B; */
+    color: var(--color-accent-green);
+    padding: 7px;
+    
+}
+.content .intro{
+    
+  line-height: 1.3;
+    font-size: 39px;
+    font-weight: bold;
+    width: 293px;
+}
+.content .intro span{
+    color: var(--color-accent-green);
+    display: block;
+    font-size: 57px;
+}
+.content .intro span:nth-child(1){
+    color: var(--color-white);
+}
+.content .desc{
+    font-size: 18px;
+    width: 80%;
+}
+
+.animation{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.desc-boxes{
+  display: flex;
+    gap: 17px;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+}
+.desc-boxes div{
+      background-color: #60809752;
+    border: 1px solid #b5bcc052;
+    height: 73px;
+    border-radius: 20px;
+    width: 19%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+    
+}
+.desc-boxes div span:nth-child(1){
+ color:var(--color-accent-green);
+}
+
+.animation img{
+    width: 230px;
+    height: 230px;
+    border-radius: 50%;
+    border: 20px solid #375971;
+}
+.animation .animated-img{
+    animation: up-down 1s ease infinite alternate-reverse;
+}
+@keyframes up-down {
+    100%{
+        transform: translateY(15px);
+    }
+    
+}

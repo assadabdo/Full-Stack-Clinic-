@@ -12,9 +12,11 @@
   --color-navy: #1B3D6F;          /* Dark stethoscope blue */
   --color-green: #4E7A1E;         /* Olive figure/circle green */
   
+  
   /* Accent Colors */
   --color-accent-blue: #2E6DB4;   /* Lighter mid-blue */
   --color-accent-green: #6FAE2E;  /* Brighter leaf green */
+  
   
   /* Surface & Text Colors */
   --color-surface: #F7F9FC;       /* Off-white warm */
@@ -85,12 +87,9 @@ body {
 
 /* Hero Gradient Background */
 .hero-gradient {
-  background: linear-gradient(
-    135deg,
-    var(--color-hero-start) 0%,
-    var(--color-hero-mid) 50%,
-    var(--color-hero-end) 100%
-  );
+  width: 100%;
+  height: 125vh;
+    background: linear-gradient(135deg, var(--color-hero-start) 0%, #264d87 50%, #2b7603 100%);
   position: relative;
 }
 

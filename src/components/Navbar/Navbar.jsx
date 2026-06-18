@@ -5,8 +5,10 @@
 
 import React, { useState, useEffect } from 'react';
 import './Navbar.css';
+// import '../styles/global.css'
 import Button from '../ui/Button';
 import logo from '../Navbar/clinic-logo.jpeg'
+import { colors } from '@mui/material';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -103,7 +105,8 @@ const Navbar = () => {
         </ul>
         <div className="navbar-mobile-auth">
           <Button 
-            variant={isLoggedIn ? 'secondary' : 'primary'} 
+            variant={isLoggedIn ? 'primary' : 'secondary'} 
+           
             onClick={() => {
               handleAuth();
               setIsMobileMenuOpen(false);

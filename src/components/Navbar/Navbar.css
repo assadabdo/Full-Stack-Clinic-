@@ -51,6 +51,7 @@
   width: 50px;
   height: 50px;
   background: inherit;
+  border-radius: 50%;
 }
 
 .logo-text {
@@ -58,7 +59,7 @@
   font-size: 1.5rem;
   font-weight: 700;
   color: transparent;
- background: linear-gradient(135deg, #000205, #a1ff3b);
+background: linear-gradient(33deg, #faefef, #a1ff3b);
   background-clip: text;
 }
 
@@ -81,7 +82,8 @@
   font-family: 'Cairo', sans-serif;
   font-size: 1rem;
   font-weight: 600;
-  color: var(--color-text);
+  /* color: var(--color-text); */
+  color: var(--color-white);
   text-decoration: none;
   transition: color var(--transition-fast);
   position: relative;
