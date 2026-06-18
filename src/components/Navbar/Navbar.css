@@ -23,7 +23,7 @@
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-    box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-md);
   padding: var(--spacing-sm) 0;
 }
 
@@ -47,19 +47,22 @@
   align-items: center;
   gap: var(--spacing-sm);
 }
-.logo-placeholder img{
+.logo-placeholder img {
   width: 50px;
   height: 50px;
   background: inherit;
   border-radius: 50%;
 }
+.navbar-scrolled .logo-placeholder img {
+  border: 2px solid #468403;
+}
 
 .logo-text {
-  font-family: 'Cairo', sans-serif;
+  font-family: "Cairo", sans-serif;
   font-size: 1.5rem;
   font-weight: 700;
   color: transparent;
-background: linear-gradient(33deg, #faefef, #a1ff3b);
+  background: linear-gradient(33deg, #aed581, #468403);
   background-clip: text;
 }
 
@@ -79,7 +82,7 @@ background: linear-gradient(33deg, #faefef, #a1ff3b);
 }
 
 .navbar-nav-link {
-  font-family: 'Cairo', sans-serif;
+  font-family: "Cairo", sans-serif;
   font-size: 1rem;
   font-weight: 600;
   /* color: var(--color-text); */
@@ -88,9 +91,12 @@ background: linear-gradient(33deg, #faefef, #a1ff3b);
   transition: color var(--transition-fast);
   position: relative;
 }
+.navbar-scrolled .navbar-nav-link {
+  color: var(--color-navy);
+}
 
 .navbar-nav-link::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -4px;
   right: 0;
@@ -189,7 +195,7 @@ background: linear-gradient(33deg, #faefef, #a1ff3b);
 }
 
 .navbar-mobile-nav-link {
-  font-family: 'Cairo', sans-serif;
+  font-family: "Cairo", sans-serif;
   font-size: 1.125rem;
   font-weight: 600;
   color: var(--color-text);
@@ -215,7 +221,7 @@ background: linear-gradient(33deg, #faefef, #a1ff3b);
   .navbar-nav {
     gap: var(--spacing-md);
   }
-  
+
   .navbar-nav-link {
     font-size: 0.9rem;
   }
@@ -226,17 +232,17 @@ background: linear-gradient(33deg, #faefef, #a1ff3b);
   .navbar-nav {
     display: none;
   }
-  
+
   /* Show mobile toggle */
   .navbar-toggle {
     display: flex;
   }
-  
+
   /* Adjust auth button on mobile */
   .navbar-auth {
     display: none;
   }
-  
+
   /* Logo size adjustment */
   .logo-text {
     font-size: 1.25rem;
@@ -247,7 +253,7 @@ background: linear-gradient(33deg, #faefef, #a1ff3b);
   .navbar-container {
     gap: var(--spacing-md);
   }
-  
+
   .logo-text {
     font-size: 1.125rem;
   }

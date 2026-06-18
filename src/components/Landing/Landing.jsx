@@ -1,46 +1,88 @@
-import './Landing.css'
-import logo from '../Navbar/clinic-logo.jpeg'
+import "./Landing.css";
+import logo from "../Navbar/clinic-logo.jpeg";
+import Button from "@mui/material/Button";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import ShieldOutlinedIcon from "@mui/icons-material/ShieldOutlined";
+import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
+import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 
-export const Landing = ()=> {
-    return(
-<div className="hero-gradient">
-    <div className='landing'>
-        <div className='content'>
-            <div className='hero'>رعاية صحية متكاملة وموثوقة </div>
-            <div className='intro'><span>مركز</span><span>العاليابي</span> الطبي المتخصص</div>
+export const Landing = () => {
+  return (
+    <div className="hero-gradient">
+      <div className="landing">
+        <div className="content">
+          <div className="hero">
+            <ShieldOutlinedIcon></ShieldOutlinedIcon>
+            رعاية صحية متكاملة وموثوقة
+          </div>
+          <div className="intro">
+            <span>مركز</span>
+            <span>العاليابي</span> الطبي المتخصص
+          </div>
 
-
-           
-            <div className='desc'>نقدم لكم رعاية صحية شاملة بايدي نخبة من الأطباء المتخصصين مع احدث التقنيات الطبية لضمان صحتكم وراحتكم.
-
+          <div className="desc">
+            نقدم لكم رعاية صحية شاملة بايدي نخبة من الأطباء المتخصصين مع احدث
+            التقنيات الطبية لضمان صحتكم وراحتكم.
+          </div>
+          <div className="buttons">
+            <Button variant="contained" color="success" size="large">
+              احجز موعدك
+            </Button>
+            <Button
+              variant="contained"
+              style={{
+                backgroundColor: "#60809752",
+                border: "1px solid #b5bcc052;",
+              }}
+              size="large"
+            >
+              تعرف علينا
+            </Button>
+          </div>
+          <div className="three">
+            <div>
+              <LocalHospitalIcon
+                sx={{ margin: "0 4px" }}
+                fontSize="small"
+              ></LocalHospitalIcon>
+              اطباء متخصصون
             </div>
-            <div className='buttons'>
-                <button>احجز موعدك</button>
-                <button>تعرف علينا</button>
+            <div>
+              <AccessTimeIcon
+                sx={{ margin: "0 4px" }}
+                fontSize="small"
+              ></AccessTimeIcon>
+              مواعيد مرنة
             </div>
+            <div>
+              <ShieldOutlinedIcon sx={{ margin: "0 4px" }}></ShieldOutlinedIcon>
+              بيئة امنة
+            </div>
+          </div>
         </div>
-        <div className='animation'>
-         
-              <img className='animated-img' src={logo} alt='no image'/>
-        
+        <div className="animation">
+          <img className="animated-img" src={logo} alt="no image" />
         </div>
-
-    </div>
-    <div className='desc-boxes'>
+      </div>
+      <div className="desc-boxes">
         <div>
-            <span>+5000</span>
-            <span>مريض سعيد</span>
+          <span>+5000</span>
+          <span>مريض سعيد</span>
         </div>
         <div>
-            <span>+20</span>
-            <span> طبيب متخصص</span>
+          <span>+20</span>
+          <span> طبيب متخصص</span>
         </div>
-        <div> <span>+15</span>
-            <span>قسم طبي</span></div>
-        <div><span>24/7</span>
-            <span>خدمة مستمرة</span></div>
+        <div>
+          {" "}
+          <span>+15</span>
+          <span>قسم طبي</span>
+        </div>
+        <div>
+          <span>24/7</span>
+          <span>خدمة مستمرة</span>
+        </div>
+      </div>
     </div>
-</div>
-
-    )
-}
+  );
+};

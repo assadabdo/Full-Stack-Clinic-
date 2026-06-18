@@ -3,12 +3,13 @@
    Sticky glass-morphism navbar with navigation
    ============================================ */
 
-import React, { useState, useEffect } from 'react';
-import './Navbar.css';
+import React, { useState, useEffect } from "react";
+import "./Navbar.css";
 // import '../styles/global.css'
-import Button from '../ui/Button';
-import logo from '../Navbar/clinic-logo.jpeg'
-import { colors } from '@mui/material';
+import Button from "@mui/material/Button";
+import logo from "../Navbar/clinic-logo.jpeg";
+import { colors } from "@mui/material";
+import LoginIcon from "@mui/icons-material/Login";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -20,17 +21,17 @@ const Navbar = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Navigation links
   const navLinks = [
-    { name: 'الرئيسية', href: '#home' },
-    { name: 'الخدمات', href: '#services' },
-    { name: 'الأقسام الطبية', href: '#departments' },
-    { name: 'الأطباء', href: '#doctors' },
-    { name: 'اتصل بنا', href: '#contact' },
+    { name: "الرئيسية", href: "#home" },
+    { name: "الخدمات", href: "#services" },
+    { name: "الأقسام الطبية", href: "#departments" },
+    { name: "الأطباء", href: "#doctors" },
+    { name: "اتصل بنا", href: "#contact" },
   ];
 
   // Toggle mobile menu
@@ -44,12 +45,12 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`navbar ${isScrolled ? 'navbar-scrolled' : ''}`}>
+    <nav className={`navbar ${isScrolled ? "navbar-scrolled" : ""}`}>
       <div className="container navbar-container">
         {/* Logo */}
         <div className="navbar-logo">
           <div className="logo-placeholder">
-            <img src={logo} alt='no' />
+            <img src={logo} alt="no" />
             <span className="logo-text">مركز العاليابي</span>
           </div>
         </div>
@@ -67,18 +68,19 @@ const Navbar = () => {
 
         {/* Login Button */}
         <div className="navbar-auth">
-          <Button 
-            variant={isLoggedIn ? 'secondary' : 'primary'} 
-            size="small"
+          <Button
+            variant={isLoggedIn ? "contained" : "contained"}
+            size="large"
+            color={isLoggedIn ? "primary" : "success"}
             onClick={handleAuth}
           >
-            {isLoggedIn ? 'تسجيل خروج' : 'تسجيل دخول'}
+            {isLoggedIn ? "تسجيل خروج" : "تسجيل دخول"}
           </Button>
         </div>
 
         {/* Mobile Menu Toggle */}
-        <button 
-          className={`navbar-toggle ${isMobileMenuOpen ? 'active' : ''}`}
+        <button
+          className={`navbar-toggle ${isMobileMenuOpen ? "active" : ""}`}
           onClick={toggleMobileMenu}
           aria-label="Toggle menu"
         >
@@ -89,12 +91,12 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu */}
-      <div className={`navbar-mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}>
+      <div className={`navbar-mobile-menu ${isMobileMenuOpen ? "open" : ""}`}>
         <ul className="navbar-mobile-nav">
           {navLinks.map((link) => (
             <li key={link.name} className="navbar-mobile-nav-item">
-              <a 
-                href={link.href} 
+              <a
+                href={link.href}
                 className="navbar-mobile-nav-link"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
@@ -104,15 +106,15 @@ const Navbar = () => {
           ))}
         </ul>
         <div className="navbar-mobile-auth">
-          <Button 
-            variant={isLoggedIn ? 'primary' : 'secondary'} 
-           
+          <Button
+            variant={isLoggedIn ? "contained" : "contained"}
+            color={isLoggedIn ? "primary" : "success"}
             onClick={() => {
               handleAuth();
               setIsMobileMenuOpen(false);
             }}
           >
-            {isLoggedIn ? 'تسجيل خروج' : 'تسجيل دخول'}
+            {isLoggedIn ? "تسجيل خروج" : "تسجيل دخول"}
           </Button>
         </div>
       </div>
