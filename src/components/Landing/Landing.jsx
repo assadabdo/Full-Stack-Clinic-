@@ -1,3 +1,7 @@
+{
+  /* <i class="fa-solid fa-arrow-left"></i> */
+}
+import Icon from "@mui/material/Icon";
 import "./Landing.css";
 import logo from "../Navbar/clinic-logo.jpeg";
 import Button from "@mui/material/Button";
@@ -25,7 +29,17 @@ export const Landing = () => {
             التقنيات الطبية لضمان صحتكم وراحتكم.
           </div>
           <div className="buttons">
-            <Button variant="contained" color="success" size="large">
+            <Button
+              startIcon={
+                <Icon
+                  className="fa-regular fa-calendar-check"
+                  sx={{ margin: "0 10px" }}
+                />
+              }
+              variant="contained"
+              color="success"
+              size="large"
+            >
               احجز موعدك
             </Button>
             <Button
@@ -78,7 +92,7 @@ export const Landing = () => {
           <span>+15</span>
           <span>قسم طبي</span>
         </div>
-        <div>
+        <div className="hide">
           <span>24/7</span>
           <span>خدمة مستمرة</span>
         </div>

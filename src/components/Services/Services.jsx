@@ -14,8 +14,8 @@ import {
   Favorite,
   Healing,
   Science,
-  XRay,
-  Pharmacy,
+  // XRay,
+  // Pharmacy,
   Emergency,
 } from "@mui/icons-material";
 
@@ -46,12 +46,12 @@ const services = [
     description: "فحوصات مخبرية دقيقة وشاملة",
   },
   {
-    icon: <XRay fontSize="large" />,
+    // icon: <XRay fontSize="large" />,
     name: "الأشعة",
     description: "أحدث أجهزة التصوير الطبي",
   },
   {
-    icon: <Pharmacy fontSize="large" />,
+    // icon: <Pharmacy fontSize="large" />,
     name: "الصيدلية",
     description: "توفير جميع الأدوية والمستلزمات",
   },

@@ -1,0 +1,73 @@
+.doctorIntro {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.doctor-hero {
+  border-radius: 20px;
+  background-color: #eef2f9;
+  color: #1b5fb2;
+  width: 111px;
+  border: 1px solid #abc7ea;
+}
+.doctor-desc {
+  color: #6b7280;
+  font-size: 20px;
+  max-width: 600px;
+  margin: 8px 0px;
+}
+.doctor-title {
+  font-size: 30px;
+  font-weight: bold;
+  color: #162f56;
+}
+.doctor-name {
+  font-size: 26px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.doctor-card {
+  border-radius: 11px;
+  border-top: 5px solid rgb(192, 57, 43);
+  background-color: white;
+  box-shadow: 1px 1px 1px 1px #d1c8c8;
+  margin: 18px;
+}
+.specialization {
+  border-radius: 20px;
+  background-color: #eef2f9;
+  color: #1b5fb2;
+  width: fit-content;
+  padding: 2px 14px;
+  margin: 10px 0px;
+}
+.doctor-Container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+}
+/* filter section */
+.filtering {
+  display: flex;
+  gap: 10px;
+}
+.filtering div {
+  width: fit-content;
+  padding: 4px 10px;
+  border: 1px solid rgb(206, 47, 47);
+  border-radius: 40px;
+  cursor: pointer;
+}
+.filtering .active .All {
+  background-color: rgb(199, 145, 145);
+}
+.filtering .active .pediatric {
+}
+.filtering .active .inner {
+}
+
+.doctor-Container .hide {
+  display: none;
+}

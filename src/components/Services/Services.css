@@ -1,0 +1,128 @@
+/* ============================================
+   SERVICES SECTION STYLES
+   Light background with service cards
+   ============================================ */
+
+.services-section {
+  background-color: var(--color-surface);
+  padding: 80px 0;
+  direction: rtl;
+  text-align: right;
+}
+
+.services-title {
+  text-align: center;
+  color: var(--color-navy);
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.services-subtitle {
+  text-align: center;
+  color: var(--color-text);
+  font-size: 1.125rem;
+  margin-bottom: 2rem;
+}
+
+/* Service Card Styles */
+.service-card {
+  background-color: var(--color-white);
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(15, 31, 61, 0.1);
+  transition: all 0.3s ease;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* Green top border accent on hover */
+.service-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 4px;
+  background-color: var(--color-green);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 24px rgba(15, 31, 61, 0.2);
+}
+
+.service-card:hover::before {
+  transform: scaleX(1);
+}
+
+.service-card-content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+}
+
+.service-icon {
+  color: var(--color-green);
+  margin-bottom: 16px;
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover .service-icon {
+  transform: scale(1.1);
+}
+
+.service-name {
+  color: var(--color-navy);
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+}
+
+.service-description {
+  color: var(--color-text);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 960px) {
+  .services-title {
+    font-size: 2rem;
+  }
+  
+  .services-subtitle {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .services-section {
+    padding: 60px 0;
+  }
+  
+  .services-title {
+    font-size: 1.75rem;
+  }
+  
+  .services-subtitle {
+    font-size: 0.875rem;
+  }
+  
+  .service-card-content {
+    padding: 20px;
+  }
+  
+  .service-name {
+    font-size: 1.125rem;
+  }
+  
+  .service-description {
+    font-size: 0.8125rem;
+  }
+}

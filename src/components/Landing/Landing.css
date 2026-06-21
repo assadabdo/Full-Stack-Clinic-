@@ -56,6 +56,7 @@
   display: flex;
   justify-content: center;
   gap: 10px;
+  flex-wrap: wrap;
 }
 .three div {
   background-color: #60809752;
@@ -82,7 +83,7 @@
   display: flex;
   gap: 17px;
   justify-content: center;
-  flex-wrap: wrap;
+
   align-items: center;
   width: 100%;
 }
@@ -117,5 +118,46 @@
 @keyframes up-down {
   100% {
     transform: translateY(15px);
+  }
+}
+/* mediaQuerires */
+@media (max-width: 900px) {
+  .animation {
+    display: none;
+  }
+  .content {
+    width: 100%;
+    margin-right: 26px;
+  }
+}
+/* @media (max-width: 768px) {
+  .content {
+ 
+  }
+} */
+
+@media (max-width: 570px) {
+  .buttons Button {
+    width: 120px;
+    font-size: 16px;
+  }
+  .hide {
+    display: none !important;
+  }
+
+  .desc-boxes {
+    margin-top: 20px;
+  }
+}
+@media (max-width: 500px) {
+  .three {
+    margin: -4px 0;
+  }
+  .desc-boxes {
+    margin-top: 30px;
+  }
+  .desc-boxes div {
+    padding: 6px;
+    width: fit-content;
   }
 }

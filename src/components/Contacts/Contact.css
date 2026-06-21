@@ -1,0 +1,89 @@
+.contact-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 50%;
+}
+.contact-links .phone,
+.email,
+.address,
+.working-hours {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: white;
+  box-shadow: 1px 1px 1px 1px #d1c8c8;
+  border-radius: 17px;
+}
+.my-icon {
+  height: 65px;
+  width: 65px;
+  background-color: blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 22px;
+  margin-right: 10px;
+}
+.details {
+  display: flex;
+  flex-direction: column;
+  color: #9ca3af;
+  margin: 11px 0px;
+  line-height: 1.4;
+}
+.details span:nth-child(2) {
+  font-size: 20px;
+  font-weight: bold;
+  color: #030358;
+}
+/* Mesage */
+.contact-container form {
+  width: 45%;
+  background-color: white;
+  border-radius: 4px;
+}
+.contact-message {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+form h2 {
+  margin: 10px 0px;
+}
+/* contact intro */
+.contactIntro {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.contact-hero {
+  border-radius: 20px;
+  background-color: rgb(255 251 231);
+  color: #db780e;
+  width: 111px;
+  border: 1px solid rgb(242 233 183);
+}
+.contact-title {
+  font-size: 30px;
+  font-weight: bold;
+  color: #162f56;
+}
+.contact-desc {
+  color: #6b7280;
+  font-size: 20px;
+  max-width: 600px;
+  margin: 8px 0px;
+}
