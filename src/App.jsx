@@ -4,17 +4,33 @@ import { Landing } from "./components/Landing/Landing";
 import { Ourservices } from "./components/Oursevices/Ourservices";
 import { Doctors } from "./components/Doctors/Doctors";
 import { Contacts } from "./components/Contacts/Contacts";
+import { Login } from "./components/LogIn/Login";
+import { Routes, Route } from "react-router-dom";
+import { Booking } from "./components/Booking/Booking";
+import { CreateAcount } from "./components/LogIn/CreateAcount";
 import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
     <div>
-      <Navbar />
-      <Landing></Landing>
-      <Ourservices></Ourservices>
-      <Doctors></Doctors>
-      <Contacts></Contacts>
-      <Footer />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <Navbar />
+              <Landing></Landing>
+              <Ourservices></Ourservices>
+              <Doctors></Doctors>
+              <Contacts></Contacts>
+              <Footer />
+            </>
+          }
+        />
+        <Route path="/login" element={<Login></Login>} />
+        <Route path="/booking" element={<Booking></Booking>} />
+        <Route path="/createAcount" element={<CreateAcount></CreateAcount>} />
+      </Routes>
     </div>
   );
 }

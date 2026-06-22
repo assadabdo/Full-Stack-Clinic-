@@ -79,19 +79,19 @@ export const Contacts = () => {
 
           <div className="contact-message">
             <TextField
-              label="user name"
+              label="المستخدم اسم"
               type="text"
               id="outlined-password-input"
               sx={{ width: "90%", margin: "0px auto" }}
             />
             <TextField
-              label="email"
+              label="البريد الإلكتروني"
               type="email"
               id="outlined-password-input"
-              sx={{ width: "90%", margin: "0px auto" }}
+              sx={{ width: "90%", margin: "0px auto", textAlign: "right" }}
             />
             <textarea
-              placeholder="Message"
+              // placeholder="الرسالة"
               style={{
                 borderColor: "black",
                 opacity: 0.5,
@@ -111,7 +111,7 @@ export const Contacts = () => {
                 margin: "0px auto",
               }}
             >
-              Send
+              ارسل الرسالة
             </Button>
           </div>
         </form>

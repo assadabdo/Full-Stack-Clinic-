@@ -7,6 +7,7 @@
 import { useState } from "react";
 import Icon from "@mui/material/Icon";
 import Button from "@mui/material/Button";
+import { Link } from "react-router-dom";
 export const DoctorCard = ({
   Dname,
   specialization,
@@ -30,28 +31,31 @@ export const DoctorCard = ({
           {specialization}
         </div>
         <p className="doctor-desc">{description}</p>
-        <Button
-          startIcon={
-            <Icon
-              className="fa-regular fa-calendar-check"
-              sx={{
-                margin: "0 10px",
-              }}
-            />
-          }
-          variant="contained"
-          sx={{
-            backgroundColor: "green",
-            width: "100px",
-            fontWeight: "bold",
-            margin: "10px 0",
-            width: "100%",
-            fontSize: "22px",
-            fontWeight: "bold",
-          }}
-        >
-          احجز موعد
-        </Button>
+
+        <a href="/booking">
+          <Button
+            startIcon={
+              <Icon
+                className="fa-regular fa-calendar-check"
+                sx={{
+                  margin: "0 10px",
+                }}
+              />
+            }
+            variant="contained"
+            sx={{
+              backgroundColor: "green",
+              width: "100px",
+              fontWeight: "bold",
+              margin: "10px 0",
+              width: "100%",
+              fontSize: "22px",
+              fontWeight: "bold",
+            }}
+          >
+            احجز موعد
+          </Button>
+        </a>
       </div>
     </div>
   );

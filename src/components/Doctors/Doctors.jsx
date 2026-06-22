@@ -22,44 +22,51 @@ export const Doctors = () => {
         </p>
         <div className="filtering">
           <div
-            className={filtered == "All" ? "active" : ""}
+            style={{ color: "#036b61" }}
+            className={filtered == "All" ? "active-All" : ""}
             onClick={() => setFiltered("All")}
           >
             الكل
           </div>
           <div
-            className={filtered == "inner" ? "active" : ""}
+            style={{ color: "#1B3D82" }}
+            className={filtered == "inner" ? "active-inner" : ""}
             onClick={() => setFiltered("inner")}
           >
             الباطنية
           </div>
           <div
-            className={filtered == "pediatric" ? "active" : ""}
+            style={{ color: "orange" }}
+            className={filtered == "pediatric" ? "active-pediatric" : ""}
             onClick={() => setFiltered("pediatric")}
           >
             الأطفال
           </div>
           <div
-            className={filtered == "dentist" ? "active" : ""}
+            style={{ color: "#8E44AD" }}
+            className={filtered == "dentist" ? "active-dentist" : ""}
             onClick={() => setFiltered("dentist")}
           >
             الأسنان
           </div>
           <div
-            className={filtered == "women" ? "active" : ""}
+            style={{ color: "#6FAE2E" }}
+            className={filtered == "women" ? "active-women" : ""}
             onClick={() => setFiltered("women")}
           >
             نساء وتوليد
           </div>
           <div
-            className={filtered == "waves" ? "active" : ""}
+            style={{ color: "#C0392B" }}
+            className={filtered == "waves" ? "active-waves" : ""}
             onClick={() => setFiltered("waves")}
           >
             {" "}
             موجات
           </div>
           <div
-            className={filtered == "general" ? "active" : ""}
+            style={{ color: "#2F4052" }}
+            className={filtered == "general" ? "active-general" : ""}
             onClick={() => setFiltered("general")}
           >
             عمومي

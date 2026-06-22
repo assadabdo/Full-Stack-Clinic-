@@ -1,0 +1,59 @@
+.background {
+  align-items: center;
+  background: linear-gradient(
+    135deg,
+    var(--color-hero-start) 0%,
+    #264d87 50%,
+    #2b7603 100%
+  );
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+}
+.alig {
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 400px;
+  background: white;
+}
+form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+form h3 {
+  display: flex;
+  margin: 10px 0px;
+  width: 300px;
+  justify-content: center;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+
+.down-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0px;
+}
+
+.down-link a {
+  text-decoration: none;
+  margin: 0px 3px;
+  color: rgb(28, 28, 205);
+}
+
+.down-link a:hover {
+  color: #007bff;
+  transition: 0.3s;
+}

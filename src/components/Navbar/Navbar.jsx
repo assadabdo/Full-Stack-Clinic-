@@ -4,6 +4,7 @@
    ============================================ */
 
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./Navbar.css";
 // import '../styles/global.css'
 import Button from "@mui/material/Button";
@@ -67,16 +68,18 @@ const Navbar = () => {
         </ul>
 
         {/* Login Button */}
-        <div className="navbar-auth">
-          <Button
-            variant={isLoggedIn ? "contained" : "contained"}
-            size="large"
-            color={isLoggedIn ? "primary" : "success"}
-            onClick={handleAuth}
-          >
-            {isLoggedIn ? "تسجيل خروج" : "تسجيل دخول"}
-          </Button>
-        </div>
+        <a href="/login">
+          <div className="navbar-auth">
+            <Button
+              variant={isLoggedIn ? "contained" : "contained"}
+              size="large"
+              color={isLoggedIn ? "primary" : "success"}
+              onClick={handleAuth}
+            >
+              {isLoggedIn ? "تسجيل خروج" : "تسجيل دخول"}
+            </Button>
+          </div>
+        </a>
 
         {/* Mobile Menu Toggle */}
         <button

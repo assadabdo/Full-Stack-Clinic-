@@ -52,20 +52,43 @@
 .filtering {
   display: flex;
   gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 .filtering div {
   width: fit-content;
   padding: 4px 10px;
-  border: 1px solid rgb(206, 47, 47);
+  border: 1px solid rgb(196 199 203);
   border-radius: 40px;
   cursor: pointer;
 }
-.filtering .active .All {
-  background-color: rgb(199, 145, 145);
+.filtering .active-All {
+  background-color: #036b61;
+  color: white !important;
 }
-.filtering .active .pediatric {
+.filtering .active-pediatric {
+  background-color: orange;
+  color: white !important;
 }
-.filtering .active .inner {
+.filtering .active-inner {
+  background-color: #1b3d82;
+  color: white !important;
+}
+.filtering .active-dentist {
+  background-color: #8e44ad;
+  color: white !important;
+}
+.filtering .active-waves {
+  background-color: #c0392b;
+  color: white !important;
+}
+.filtering .active-women {
+  background-color: #6fae2e;
+  color: white !important;
+}
+.filtering .active-general {
+  background-color: #2f4052;
+  color: white !important;
 }
 
 .doctor-Container .hide {
