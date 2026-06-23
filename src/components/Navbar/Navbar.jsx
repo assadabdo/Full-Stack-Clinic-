@@ -6,6 +6,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import LogoutIcon from "@mui/icons-material/Logout";
 import "./Navbar.css";
 // import '../styles/global.css'
 import Button from "@mui/material/Button";
@@ -33,7 +34,7 @@ const Navbar = ({ session }) => {
   const navLinks = [
     { name: "الرئيسية", href: "#home" },
     { name: "الخدمات", href: "#services" },
-    { name: "الأقسام الطبية", href: "#departments" },
+    // { name: "الأقسام الطبية", href: "#departments" },
     { name: "الأطباء", href: "#doctors" },
     { name: "اتصل بنا", href: "#contact" },
   ];
@@ -79,10 +80,11 @@ const Navbar = ({ session }) => {
 
         <div className="navbar-auth">
           <Button
+            startIcon={session ? <LogoutIcon sx={{ margin: "0px 8px" }} /> : ""}
             onClick={handleLoginLogout}
             variant={session ? "contained" : "contained"}
             size="large"
-            color={session ? "primary" : "success"}
+            sx={{ backgroundColor: session ? "#d75c10c8" : "success" }}
           >
             {session ? "تسجيل خروج" : "تسجيل دخول"}
           </Button>
@@ -117,6 +119,7 @@ const Navbar = ({ session }) => {
         </ul>
         <div className="navbar-mobile-auth">
           <Button
+            startIcon={session ? <LogoutIcon sx={{ margin: "0px 8px" }} /> : ""}
             variant={session ? "contained" : "contained"}
             color={session ? "primary" : "success"}
             onClick={() => {

@@ -8,12 +8,14 @@
   /* <i class="fa-solid fa-xmark"></i> */
 }
 import { useEffect } from "react";
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Icon from "@mui/material/Icon";
 import Button from "@mui/material/Button";
 import { supabase } from "../utils/supabase";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 export const DoctorCard = ({
   Dname,
   specialization,
@@ -26,6 +28,10 @@ export const DoctorCard = ({
   const handleCancel = async () => {
     const { data: userData } = await supabase.auth.getUser();
 
+    if (!userData.user) {
+      return;
+    }
+
     const { error } = await supabase
       .from("Booking")
       .delete()
@@ -33,30 +39,47 @@ export const DoctorCard = ({
       .eq("doctor_name", Dname);
 
     if (error) {
-      // console.log("show user datbase", userData.user);
       console.log("error while caneling", error);
     }
     setIsBooked(false);
   };
 
-  const book = () => {
-    if (isBooked) {
-      handleCancel();
+  const book = async () => {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+
+    if (session) {
+      if (isBooked) {
+        handleCancel();
+      } else {
+        navigate("/booking");
+      }
     } else {
-      navigate("/booking");
+      Swal.fire({
+        icon: "warning",
+        title: "يجب تسجيل الدخول",
+        text: "يرجى تسجيل الدخول أولاً لحجز موعد",
+        confirmButtonText: "تسجيل الدخول",
+      }).then(() => {
+        navigate("/login");
+      });
     }
   };
+
   useEffect(() => {
     const checkBooking = async () => {
       const { data: userData } = await supabase.auth.getUser();
+
+      if (!userData.user) {
+        return;
+      }
 
       const { data, error } = await supabase
         .from("Booking")
         .select("*")
         .eq("user_id", userData.user.id)
         .eq("doctor_name", Dname);
-
-      console.log("All bookings:", data);
 
       if (error) {
         console.log("error", error);

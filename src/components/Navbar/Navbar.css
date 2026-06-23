@@ -102,18 +102,21 @@
   right: 0;
   width: 0;
   height: 2px;
-  background-color: var(--color-green);
+  background-color: rgb(37, 207, 37);
   transition: width var(--transition-normal);
 }
 
 .navbar-nav-link:hover {
-  color: var(--color-green);
+  /* color: var(--color-green); */
+  color: rgb(37, 207, 37);
 }
 
 .navbar-nav-link:hover::after {
   width: 100%;
 }
-
+/* .navbar-scrolled .navbar-nav-link:hover {
+  color: #468403;
+} */
 /* ============================================
    AUTH BUTTON
    ============================================ */
@@ -137,11 +140,13 @@
   cursor: pointer;
   padding: 0;
 }
-
+.navbar-scrolled .hamburger-line {
+  background-color: #468403c4;
+}
 .hamburger-line {
   width: 25px;
   height: 3px;
-  background-color: var(--color-navy);
+  background-color: #b6cdf0;
   border-radius: 2px;
   transition: all var(--transition-normal);
 }

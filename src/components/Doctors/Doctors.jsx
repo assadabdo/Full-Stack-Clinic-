@@ -1,19 +1,36 @@
 import { DoctorCard } from "./DoctorCrad";
 import { useState } from "react";
+import { useEffect } from "react";
 import "./doctor.css";
+import { supabase } from "../utils/supabase";
+import { data } from "react-router-dom";
+import { Skeleton } from "@mui/material";
+
 export const Doctors = () => {
   const [filtered, setFiltered] = useState("All");
+  const [loading, setLoading] = useState(false);
+  const [doctor, setDoctor] = useState("");
 
-  const handlfilter = () => {
-    let state = document.querySelectorAll(".non");
+  useEffect(() => {
+    const fetchDoctors = async () => {
+      const { data, error } = await supabase
+        .from("doctor_schedule")
+        .select("*");
 
-    // setIsfiltered(true);
-    // setDentist(true);
-    // setPediatric(true);
-    // state.classlist.add("active")
-  };
+      if (error) {
+        console.log("Error fetching doctor schedule:", error);
+        setLoading(true);
+        return;
+      }
+      setDoctor(data);
+      setLoading(false);
+    };
+
+    fetchDoctors();
+  }, []);
+  console.log(" first Doctor data:", doctor[0]);
   return (
-    <div>
+    <div id="doctors">
       <div className="doctorIntro">
         <div className="doctor-hero"> كادرنا الطبي</div>
         <div className="doctor-title"> نخبة من الأطباء المتخصصين</div>
@@ -73,62 +90,73 @@ export const Doctors = () => {
           </div>
         </div>
       </div>
-      <div className="doctor-Container">
-        {(filtered === "All" || filtered === "inner") && (
-          <DoctorCard
-            Dname="نجده انور "
-            description="يهتم بمتابعة صحة البالغين وتشخيص الحالات العامة مثل السكري وضغط الدم ومشاكل الجهاز الهضمي ويقدم رعاية مستمرة وتقييم بسيط للحالة مع توجيه المريض للعلاج المناسب حسب الحاجة"
-            specialization="الباطنية"
-            borderColor="#1b5fb2"
-            backgroundColor="#eef2f9"
-          ></DoctorCard>
-        )}
-        {(filtered === "All" || filtered === "pediatric") && (
-          <DoctorCard
-            Dname="رابيه بابكر"
-            description="يقدم رعاية طبية للأطفال والرضع تشمل الفحوصات الدورية وتشخيص وعلاج الأمراض الشائعة ومتابعة النمو والتطور الصحي للطفل في مختلف المراحل العمرية"
-            specialization="أطفال"
-            borderColor="orange"
-            backgroundColor="#f4eacf"
-          ></DoctorCard>
-        )}
-        {(filtered === "All" || filtered === "women") && (
-          <DoctorCard
-            Dname="رجاء الكامل"
-            description="يقدم رعاية طبية للنساء تشمل متابعة الحمل والولادة والفحوصات الدورية وعلاج بعض المشاكل النسائية الشائعة ويهتم بصحة الأم والجنين وتقديم متابعة آمنة خلال فترة الحمل وبعد الولادة"
-            specialization="نساء وتوليد"
-            borderColor="#6FAE2E"
-            backgroundColor="#F3F8EE"
-          ></DoctorCard>
-        )}
-        {(filtered === "All" || filtered === "waves") && (
-          <DoctorCard
-            Dname="أبوبكر عبدالرحيم الدغورابي "
-            description="يقوم بإجراء فحوصات الموجات الصوتية لتصوير الأعضاء الداخلية مثل البطن والحوض والغدة الدرقية لمساعدة الأطباء في التشخيص وتقديم صور دقيقة وسريعة تدعم تقييم الحالة الصحية بشكل أفضل"
-            specialization=" موجات"
-            borderColor="#C0392B"
-            backgroundColor="#FAEFEE"
-          ></DoctorCard>
-        )}
-        {(filtered === "All" || filtered === "dentist") && (
-          <DoctorCard
-            Dname=" هند عماد"
-            description="يقدم خدمات العناية بالأسنان والفم بما في ذلك علاج التسوس وتنظيف الأسنان والحشوات البسيطة ويساعد المرضى على الحفاظ على صحة الفم والوقاية من مشاكل الأسنان الشائعة."
-            specialization=" أسنان"
-            borderColor="#8E44AD"
-            backgroundColor="#F6F0F8"
-          ></DoctorCard>
-        )}
-        {(filtered === "All" || filtered === "general") && (
-          <DoctorCard
-            Dname="الحان محمد منصور"
-            description="يقدم رعاية صحية أولية للمرضى من مختلف الأعمار ويقوم بتشخيص وعلاج الحالات الشائعة والبسيطة مثل الزكام والحمى والآلام العامة ويحوّل الحالات التي تحتاج لتخصص أدق عند الضرورة"
-            specialization="عمومي"
-            borderColor="#2C3E50"
-            backgroundColor="#EEF3F9"
-          ></DoctorCard>
-        )}
-      </div>
+      {loading ? (
+        <>
+          <Skeleton variant="rounded" width={350} height={320} />
+          <Skeleton variant="rounded" width={350} height={320} />
+          <Skeleton variant="rounded" width={350} height={320} />
+          <Skeleton variant="rounded" width={350} height={320} />
+          <Skeleton variant="rounded" width={350} height={320} />
+          <Skeleton variant="rounded" width={350} height={320} />
+        </>
+      ) : (
+        <div className="doctor-Container">
+          {(filtered === "All" || filtered === "inner") && (
+            <DoctorCard
+              Dname={doctor[0]?.doctor_name}
+              description={doctor[0]?.description}
+              specialization={doctor[0]?.specialization}
+              borderColor="#1b5fb2"
+              backgroundColor="#eef2f9"
+            ></DoctorCard>
+          )}
+          {(filtered === "All" || filtered === "pediatric") && (
+            <DoctorCard
+              Dname={doctor[3]?.doctor_name}
+              description={doctor[3]?.description}
+              specialization={doctor[3]?.specialization}
+              borderColor="orange"
+              backgroundColor="#f4eacf"
+            ></DoctorCard>
+          )}
+          {(filtered === "All" || filtered === "women") && (
+            <DoctorCard
+              Dname={doctor[1]?.doctor_name}
+              description={doctor[1]?.description}
+              specialization={doctor[1]?.specialization}
+              borderColor="#6FAE2E"
+              backgroundColor="#F3F8EE"
+            ></DoctorCard>
+          )}
+          {(filtered === "All" || filtered === "waves") && (
+            <DoctorCard
+              Dname={doctor[2]?.doctor_name}
+              description={doctor[2]?.description}
+              specialization={doctor[2]?.specialization}
+              borderColor="#C0392B"
+              backgroundColor="#FAEFEE"
+            ></DoctorCard>
+          )}
+          {(filtered === "All" || filtered === "dentist") && (
+            <DoctorCard
+              Dname={doctor[4]?.doctor_name}
+              description={doctor[4]?.description}
+              specialization={doctor[4]?.specialization}
+              borderColor="#8E44AD"
+              backgroundColor="#F6F0F8"
+            ></DoctorCard>
+          )}
+          {(filtered === "All" || filtered === "general") && (
+            <DoctorCard
+              Dname={doctor[5]?.doctor_name}
+              description={doctor[5]?.description}
+              specialization={doctor[5]?.specialization}
+              borderColor="#2C3E50"
+              backgroundColor="#EEF3F9"
+            ></DoctorCard>
+          )}
+        </div>
+      )}
     </div>
   );
 };

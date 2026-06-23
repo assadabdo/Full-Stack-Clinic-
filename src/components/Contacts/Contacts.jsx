@@ -15,9 +15,27 @@ import Icon from "@mui/material/Icon";
 import "./Contact.css";
 import TextField from "@mui/material/TextField";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
+import { useState } from "react";
 export const Contacts = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handlsubmit = async (e) => {
+    e.preventDefault();
+    const { error } = await supabase.from("Booking").insert({
+      name,
+      email,
+      message,
+    });
+
+    if (error) {
+      console.log("Error booking appointment:", error);
+      return;
+    }
+  };
   return (
-    <div>
+    <div id="contact">
       <div className="contactIntro">
         <div className="contact-hero"> تواصل معنا</div>
         <div className="contact-title"> نحن هنا لخدمتكم</div>
@@ -74,23 +92,29 @@ export const Contacts = () => {
             </div>
           </div>
         </div>
-        <form>
+        <form onSubmit={handlsubmit}>
           <h2>أرسل رسالتك</h2>
 
           <div className="contact-message">
             <TextField
+              onChange={(e) => setName(e.target.value)}
+              required
               label="المستخدم اسم"
               type="text"
               id="outlined-password-input"
               sx={{ width: "90%", margin: "0px auto" }}
             />
             <TextField
+              onChange={() => setEmail(e.target.value)}
+              required
               label="البريد الإلكتروني"
               type="email"
               id="outlined-password-input"
               sx={{ width: "90%", margin: "0px auto", textAlign: "right" }}
             />
             <textarea
+              onChange={() => setMessage(e.target.value)}
+              required
               // placeholder="الرسالة"
               style={{
                 borderColor: "black",
@@ -102,6 +126,7 @@ export const Contacts = () => {
               }}
             />
             <Button
+              type="submit"
               variant="contained"
               sx={{
                 width: "90%",

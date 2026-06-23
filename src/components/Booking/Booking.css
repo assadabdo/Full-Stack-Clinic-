@@ -4,3 +4,65 @@
   gap: 15px;
   width: 100%;
 }
+.react-datepicker-wrapper {
+  width: 90%;
+}
+
+.booking-date {
+  width: 90%;
+  border-radius: 4px;
+  height: 55px;
+  margin: 0px 35pxr;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.booking-date-picker {
+  height: 53px;
+  width: 70%;
+  border-radius: 7px;
+  border: 1px solid #425880;
+  background-color: #fcfcfc;
+}
+.background {
+  align-items: center;
+  background: linear-gradient(
+    135deg,
+    var(--color-hero-start) 0%,
+    #264d87 50%,
+    #2b7603 100%
+  );
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+}
+.alig {
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 400px;
+  background: white;
+}
+form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+form h3 {
+  display: flex;
+  margin: 10px 0px;
+  width: 300px;
+  justify-content: center;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}

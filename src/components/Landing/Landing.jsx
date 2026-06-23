@@ -12,7 +12,7 @@ import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 
 export const Landing = () => {
   return (
-    <div className="hero-gradient">
+    <div id="home" className="hero-gradient">
       <div className="landing">
         <div className="content">
           <div className="hero">

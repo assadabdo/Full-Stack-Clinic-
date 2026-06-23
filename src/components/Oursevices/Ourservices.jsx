@@ -61,7 +61,7 @@ export const Ourservices = () => {
 
   return (
     <>
-      <div className="sectionContainer">
+      <div id="services" className="sectionContainer">
         <div className="sectionIntro">
           <div className="section-hero">خدماتنا الطبية</div>
           <div className="section-title">رعاية شاملة لصحتك</div>

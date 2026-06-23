@@ -19,9 +19,6 @@ function App() {
     Setsession(currentSession.data.session);
   };
 
-  const logout = async () => {
-    await supabase.auth.signOut();
-  };
   console.log(session);
 
   useEffect(() => {
