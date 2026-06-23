@@ -3,26 +3,26 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { supabase } from "../utils/supabase";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
-  const [IssignUp, SetIssignUp] = useState(false);
   const [email, Setemail] = useState("");
   const [password, Setpassword] = useState("");
+  const navigate = useNavigate();
 
   const handlsumbit = async (e) => {
     e.preventDefault();
 
-    if (IssignUp) {
-      const { error, data } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
-      if (error) {
-        console.log("error signinIn", error);
-      }
-      console.log("data", data);
+    const { error, data } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+    if (error) {
+      console.log("error signinIn", error);
       return;
     }
+    console.log("data", data);
+    navigate("/");
   };
 
   return (
@@ -48,9 +48,8 @@ export const Login = () => {
             />
 
             <Button
-              onClick={() => SetIssignUp(true)}
               variant="contained"
-              type="sumbit"
+              type="submit"
               sx={{
                 width: "90%",
                 borderRadius: "7px",

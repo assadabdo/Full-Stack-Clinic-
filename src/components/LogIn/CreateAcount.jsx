@@ -3,11 +3,13 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { useState } from "react";
 import { supabase } from "../utils/supabase";
+import { useNavigate } from "react-router-dom";
 
 export const CreateAcount = () => {
   const [email, Setemail] = useState("");
   const [password, Setpassword] = useState("");
   const [name, Setname] = useState("");
+  const navigate = useNavigate();
 
   const handlsumbit = async (e) => {
     e.preventDefault();
@@ -18,11 +20,12 @@ export const CreateAcount = () => {
     });
     if (error) {
       console.log("error signinIn", error);
+      return;
     }
     console.log("data", data);
-    return;
+
+    navigate("/");
   };
-  console.log("SUPABASE URL:", import.meta.env.VITE_SUPABASE_URL);
 
   return (
     <div className="background">

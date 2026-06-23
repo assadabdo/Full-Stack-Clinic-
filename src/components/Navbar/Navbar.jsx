@@ -5,17 +5,20 @@
 
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./Navbar.css";
 // import '../styles/global.css'
 import Button from "@mui/material/Button";
 import logo from "../Navbar/clinic-logo.jpeg";
+import { supabase } from "../utils/supabase";
 import { colors } from "@mui/material";
 import LoginIcon from "@mui/icons-material/Login";
 
-const Navbar = () => {
+const Navbar = ({ session }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
 
   // Handle scroll effect for glass morphism
   useEffect(() => {
@@ -41,8 +44,13 @@ const Navbar = () => {
   };
 
   // Handle login/logout
-  const handleAuth = () => {
-    setIsLoggedIn(!isLoggedIn);
+  const handleLoginLogout = async () => {
+    if (session) {
+      await supabase.auth.signOut();
+    } else {
+      // Redirect to login page
+      navigate("/login");
+    }
   };
 
   return (
@@ -68,18 +76,17 @@ const Navbar = () => {
         </ul>
 
         {/* Login Button */}
-        <a href="/login">
-          <div className="navbar-auth">
-            <Button
-              variant={isLoggedIn ? "contained" : "contained"}
-              size="large"
-              color={isLoggedIn ? "primary" : "success"}
-              onClick={handleAuth}
-            >
-              {isLoggedIn ? "تسجيل خروج" : "تسجيل دخول"}
-            </Button>
-          </div>
-        </a>
+
+        <div className="navbar-auth">
+          <Button
+            onClick={handleLoginLogout}
+            variant={session ? "contained" : "contained"}
+            size="large"
+            color={session ? "primary" : "success"}
+          >
+            {session ? "تسجيل خروج" : "تسجيل دخول"}
+          </Button>
+        </div>
 
         {/* Mobile Menu Toggle */}
         <button
@@ -110,14 +117,14 @@ const Navbar = () => {
         </ul>
         <div className="navbar-mobile-auth">
           <Button
-            variant={isLoggedIn ? "contained" : "contained"}
-            color={isLoggedIn ? "primary" : "success"}
+            variant={session ? "contained" : "contained"}
+            color={session ? "primary" : "success"}
             onClick={() => {
-              handleAuth();
+              handleLoginLogout();
               setIsMobileMenuOpen(false);
             }}
           >
-            {isLoggedIn ? "تسجيل خروج" : "تسجيل دخول"}
+            {session ? "تسجيل خروج" : "تسجيل دخول"}
           </Button>
         </div>
       </div>
