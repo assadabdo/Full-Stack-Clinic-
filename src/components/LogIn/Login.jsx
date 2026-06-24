@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import { supabase } from "../utils/supabase";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const Login = () => {
   const [email, Setemail] = useState("");
@@ -63,8 +64,7 @@ export const Login = () => {
             <div className="down-link">
               ليس لديك حساب؟{" "}
               <span>
-                {" "}
-                <a href="/createAcount">إنشاء حساب </a>{" "}
+                <Link to="/createAcount">إنشاء حساب</Link>
               </span>
             </div>
           </div>

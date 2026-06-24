@@ -218,7 +218,10 @@
   display: flex;
   justify-content: center;
 }
-
+.navbar-mobile-menu Button {
+  width: 66%;
+  font-size: 17px;
+}
 /* ============================================
    RESPONSIVE DESIGN
    ============================================ */

@@ -38,9 +38,7 @@ const Footer = () => {
               <a href="#services" className="footer-link">
                 الخدمات
               </a>
-              <a href="#departments" className="footer-link">
-                الأقسام الطبية
-              </a>
+
               <a href="#doctors" className="footer-link">
                 الأطباء
               </a>
@@ -61,13 +59,13 @@ const Footer = () => {
                 طب الأطفال
               </a>
               <a href="#" className="footer-link">
-                أمراض القلب
+                طب الأسنان
               </a>
               <a href="#" className="footer-link">
-                الأمراض الجلدية
+                نساء وتوليد
               </a>
               <a href="#" className="footer-link">
-                الطوارئ
+                الموجات الصوتية
               </a>
             </div>
           </div>
@@ -78,15 +76,15 @@ const Footer = () => {
             <div className="footer-contact">
               <div className="contact-item">
                 <LocationOn className="contact-icon" />
-                <p>المملكة العربية السعودية، الرياض</p>
+                <p>الدامر غرب الاستاد</p>
               </div>
               <div className="contact-item">
                 <Phone className="contact-icon" />
-                <p>+966 11 234 5678</p>
+                <p>249910054892+</p>
               </div>
               <div className="contact-item">
                 <Email className="contact-icon" />
-                <p>info@alayyabi.com</p>
+                <p>Aliabicenter@gmail.com</p>
               </div>
             </div>
 

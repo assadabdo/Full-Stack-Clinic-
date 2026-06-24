@@ -24,7 +24,7 @@ export const Booking = () => {
 
   const handleDoctorChange = async (name) => {
     setDoctorName(name);
-    console.log("doctorname", name);
+    // console.log("doctorname", name);
 
     const { data, error } = await supabase
       .from("doctor_schedule")
@@ -35,7 +35,7 @@ export const Booking = () => {
       console.log("Error fetching doctor schedule:", error);
       return;
     }
-    console.log("Doctor schedule:", data[0].working_days);
+    // console.log("Doctor schedule:", data[0].working_days);
     setWorkingDays(data[0].working_days);
     // console.log("Working days:", workingDays);
   };
@@ -58,7 +58,14 @@ export const Booking = () => {
 
     if (error) {
       console.log("Error booking appointment:", error);
+      Swal.fire({
+        icon: "warning",
+        title: "حدث خطأ",
+        text: "يرجى المحاولة مرة أخرى",
+      });
+      return;
     }
+
     Swal.fire({
       title: "تهانينا!",
       text: " تم الحجز بنجاح وسنقوم بالاتصال بك قريباً",
@@ -89,7 +96,7 @@ export const Booking = () => {
 
     fetchDoctors();
   }, []);
-  console.log(" first Doctor data:", doctor[0]);
+  // console.log(" first Doctor data:", doctor[0]);
 
   return (
     <div className="background">

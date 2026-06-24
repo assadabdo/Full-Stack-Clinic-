@@ -29,29 +29,33 @@ export const Landing = () => {
             التقنيات الطبية لضمان صحتكم وراحتكم.
           </div>
           <div className="buttons">
-            <Button
-              startIcon={
-                <Icon
-                  className="fa-regular fa-calendar-check"
-                  sx={{ margin: "0 10px" }}
-                />
-              }
-              variant="contained"
-              color="success"
-              size="large"
-            >
-              احجز موعدك
-            </Button>
-            <Button
-              variant="contained"
-              style={{
-                backgroundColor: "#60809752",
-                border: "1px solid #b5bcc052;",
-              }}
-              size="large"
-            >
-              تعرف علينا
-            </Button>
+            <a href="#doctors">
+              <Button
+                startIcon={
+                  <Icon
+                    className="fa-regular fa-calendar-check"
+                    sx={{ margin: "0 10px" }}
+                  />
+                }
+                variant="contained"
+                color="success"
+                size="large"
+              >
+                احجز موعدك
+              </Button>
+            </a>
+            <a href="#services">
+              <Button
+                variant="contained"
+                style={{
+                  backgroundColor: "#60809752",
+                  border: "1px solid #b5bcc052;",
+                }}
+                size="large"
+              >
+                تعرف علينا
+              </Button>
+            </a>
           </div>
           <div className="three">
             <div>
@@ -81,7 +85,7 @@ export const Landing = () => {
       <div className="desc-boxes">
         <div>
           <span>+5000</span>
-          <span>مريض سعيد</span>
+          <span>مريض متعافيc</span>
         </div>
         <div>
           <span>+20</span>

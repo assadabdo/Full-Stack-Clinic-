@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import { useState } from "react";
 import { supabase } from "../utils/supabase";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const CreateAcount = () => {
   const [email, Setemail] = useState("");
@@ -19,7 +20,7 @@ export const CreateAcount = () => {
       password,
     });
     if (error) {
-      console.log("error signinIn", error);
+      console.log("error signiingUp", error);
       return;
     }
     console.log("data", data);
@@ -36,6 +37,7 @@ export const CreateAcount = () => {
 
           <div className="login-container">
             <TextField
+              value={email}
               onChange={(e) => Setemail(e.target.value)}
               label="البريد الالكتروني"
               type="email"
@@ -43,6 +45,7 @@ export const CreateAcount = () => {
               sx={{ width: "90%", margin: "0px auto" }}
             />
             <TextField
+              value={name}
               onChange={(e) => Setname(e.target.value)}
               label="اسم المستخدم"
               type="text"
@@ -50,6 +53,7 @@ export const CreateAcount = () => {
               sx={{ width: "90%", margin: "0px auto" }}
             />
             <TextField
+              value={password}
               onChange={(e) => Setpassword(e.target.value)}
               label="كلمة المرور"
               type="password"
@@ -73,8 +77,7 @@ export const CreateAcount = () => {
             <div className="down-link">
               لديك حساب بالفعل؟
               <span>
-                {" "}
-                <a href="/login">تسجيل الدخول</a>{" "}
+                <Link to="/login">تسجيل الدخول</Link>
               </span>
             </div>
           </div>

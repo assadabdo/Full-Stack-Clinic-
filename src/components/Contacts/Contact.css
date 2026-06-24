@@ -87,3 +87,16 @@ form h2 {
   max-width: 600px;
   margin: 8px 0px;
 }
+@media (max-width: 768px) {
+  .contact-container {
+    flex-direction: column;
+  }
+
+  .contact-links {
+    width: 100%;
+  }
+
+  .contact-container form {
+    width: 100%;
+  }
+}

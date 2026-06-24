@@ -4,30 +4,28 @@
    ============================================ */
 
 /* Import Cairo font for Arabic text */
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap");
 
 /* CSS Variables - Color Palette extracted from logo */
 :root {
   /* Primary Colors */
-  --color-navy: #1B3D6F;          /* Dark stethoscope blue */
-  --color-green: #4E7A1E;         /* Olive figure/circle green */
-  
-  
+  --color-navy: #1b3d6f; /* Dark stethoscope blue */
+  --color-green: #4e7a1e; /* Olive figure/circle green */
+
   /* Accent Colors */
-  --color-accent-blue: #2E6DB4;   /* Lighter mid-blue */
-  --color-accent-green: #6FAE2E;  /* Brighter leaf green */
-  
-  
+  --color-accent-blue: #2e6db4; /* Lighter mid-blue */
+  --color-accent-green: #6fae2e; /* Brighter leaf green */
+
   /* Surface & Text Colors */
-  --color-surface: #F7F9FC;       /* Off-white warm */
-  --color-text: #0F1F3D;          /* Near-black navy */
-  --color-white: #FFFFFF;
-  
+  --color-surface: #f7f9fc; /* Off-white warm */
+  --color-text: #0f1f3d; /* Near-black navy */
+  --color-white: #ffffff;
+
   /* Hero Gradient Colors */
-  --color-hero-start: #0F1F3D;     /* Deep navy */
-  --color-hero-mid: #1B3D6F;       /* Rich blue */
-  --color-hero-end: #1A4A20;       /* Green-tinted */
-  
+  --color-hero-start: #0f1f3d; /* Deep navy */
+  --color-hero-mid: #1b3d6f; /* Rich blue */
+  --color-hero-end: #1a4a20; /* Green-tinted */
+
   /* Spacing */
   --spacing-xs: 0.5rem;
   --spacing-sm: 1rem;
@@ -35,18 +33,18 @@
   --spacing-lg: 2rem;
   --spacing-xl: 3rem;
   --spacing-2xl: 4rem;
-  
+
   /* Border Radius */
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
   --radius-xl: 24px;
-  
+
   /* Shadows */
   --shadow-sm: 0 2px 4px rgba(15, 31, 61, 0.1);
   --shadow-md: 0 4px 12px rgba(15, 31, 61, 0.15);
   --shadow-lg: 0 8px 24px rgba(15, 31, 61, 0.2);
-  
+
   /* Transitions */
   --transition-fast: 0.2s ease;
   --transition-normal: 0.3s ease;
@@ -65,7 +63,7 @@ html {
 }
 
 body {
-  font-family: 'Cairo', sans-serif;
+  font-family: "Cairo", sans-serif;
   background-color: var(--color-surface);
   color: var(--color-text);
   line-height: 1.6;
@@ -86,16 +84,10 @@ body {
 }
 
 /* Hero Gradient Background */
-.hero-gradient {
-  width: 100%;
-  height: 125vh;
-    background: linear-gradient(135deg, var(--color-hero-start) 0%, #264d87 50%, #2b7603 100%);
-  position: relative;
-}
 
 /* Radial highlight for hero */
 .hero-gradient::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   left: 50%;
@@ -143,7 +135,7 @@ body {
   .container {
     padding: 0 var(--spacing-sm);
   }
-  
+
   .section {
     padding: var(--spacing-xl) 0;
   }

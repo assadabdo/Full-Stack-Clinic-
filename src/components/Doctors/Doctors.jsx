@@ -29,7 +29,7 @@ export const Doctors = () => {
 
     fetchDoctors();
   }, []);
-  console.log(" first Doctor data:", doctor[0]);
+  // console.log(" first Doctor data:", doctor[0]);
   return (
     <div id="doctors">
       <div className="doctorIntro">
@@ -109,7 +109,7 @@ export const Doctors = () => {
             })
 
             .map((doc) => {
-              console.log("doc", doc);
+              // console.log("doc", doc);
               return (
                 <DoctorCard
                   key={doc.id}

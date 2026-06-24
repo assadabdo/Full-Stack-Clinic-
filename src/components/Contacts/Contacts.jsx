@@ -55,7 +55,7 @@ export const Contacts = () => {
             </span>
             <div className="details">
               <span>هاتف</span>
-              <span> 050 123 4567</span>
+              <span>249910054892+</span>
               <span> الاحد - الخميس</span>
             </div>
           </div>
@@ -68,7 +68,7 @@ export const Contacts = () => {
             </span>
             <div className="details">
               <span> البريد الإلكتروني</span>
-              <span>1234568</span>
+              <span>Aliabicenter@gmail.com</span>
               <span>نرد خلال 24 ساعة</span>
             </div>
           </div>
@@ -81,8 +81,8 @@ export const Contacts = () => {
             </span>
             <div className="details">
               <span>العنوان</span>
-              <span>العنوان</span>
-              <span>العنوان</span>
+              <span>الدامر غرب الاستاد</span>
+              <span>تقاطع الشمالية</span>
             </div>
           </div>
           <div className="working-hours">

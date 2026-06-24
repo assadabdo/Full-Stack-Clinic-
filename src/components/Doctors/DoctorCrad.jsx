@@ -123,12 +123,13 @@ export const DoctorCard = ({
           variant="contained"
           sx={{
             backgroundColor: "green",
-            width: "100px",
+            width: { xs: "70%", sm: "100%" },
             fontWeight: "bold",
-            margin: "10px 0",
-            width: "100%",
-            fontSize: "22px",
+            margin: { xs: "10px auto", sm: "10px 0px" },
+            fontSize: { xs: "16px", sm: "22px" },
             fontWeight: "bold",
+            display: "flex",
+            // justifyContent: { xs: "center", sm: "flex-start" },
           }}
         >
           {isBooked ? "الغاء الحجز" : " احجز موعد"}
