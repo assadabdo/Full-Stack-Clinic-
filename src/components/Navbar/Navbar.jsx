@@ -84,7 +84,7 @@ const Navbar = ({ session }) => {
             onClick={handleLoginLogout}
             variant={session ? "contained" : "contained"}
             size="large"
-            sx={{ backgroundColor: session ? "#d75c10c8" : "success" }}
+            color={session ? "primary" : "success"}
           >
             {session ? "تسجيل خروج" : "تسجيل دخول"}
           </Button>

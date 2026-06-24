@@ -8,8 +8,8 @@ import { Skeleton } from "@mui/material";
 
 export const Doctors = () => {
   const [filtered, setFiltered] = useState("All");
-  const [loading, setLoading] = useState(false);
-  const [doctor, setDoctor] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [doctor, setDoctor] = useState([]);
 
   useEffect(() => {
     const fetchDoctors = async () => {
@@ -19,12 +19,13 @@ export const Doctors = () => {
 
       if (error) {
         console.log("Error fetching doctor schedule:", error);
-        setLoading(true);
+        setLoading(false);
         return;
       }
       setDoctor(data);
       setLoading(false);
     };
+    setLoading(false);
 
     fetchDoctors();
   }, []);
@@ -47,44 +48,44 @@ export const Doctors = () => {
           </div>
           <div
             style={{ color: "#1B3D82" }}
-            className={filtered == "inner" ? "active-inner" : ""}
-            onClick={() => setFiltered("inner")}
+            className={filtered == "الباطنية" ? "active-inner" : ""}
+            onClick={() => setFiltered("الباطنية")}
           >
             الباطنية
           </div>
           <div
             style={{ color: "orange" }}
-            className={filtered == "pediatric" ? "active-pediatric" : ""}
-            onClick={() => setFiltered("pediatric")}
+            className={filtered == "أطفال" ? "active-pediatric" : ""}
+            onClick={() => setFiltered("أطفال")}
           >
             الأطفال
           </div>
           <div
             style={{ color: "#8E44AD" }}
-            className={filtered == "dentist" ? "active-dentist" : ""}
-            onClick={() => setFiltered("dentist")}
+            className={filtered == "أسنان" ? "active-dentist" : ""}
+            onClick={() => setFiltered("أسنان")}
           >
             الأسنان
           </div>
           <div
             style={{ color: "#6FAE2E" }}
-            className={filtered == "women" ? "active-women" : ""}
-            onClick={() => setFiltered("women")}
+            className={filtered == "نساء وتوليد" ? "active-women" : ""}
+            onClick={() => setFiltered("نساء وتوليد")}
           >
             نساء وتوليد
           </div>
           <div
             style={{ color: "#C0392B" }}
-            className={filtered == "waves" ? "active-waves" : ""}
-            onClick={() => setFiltered("waves")}
+            className={filtered == "موجات" ? "active-waves" : ""}
+            onClick={() => setFiltered("موجات")}
           >
             {" "}
             موجات
           </div>
           <div
             style={{ color: "#2F4052" }}
-            className={filtered == "general" ? "active-general" : ""}
-            onClick={() => setFiltered("general")}
+            className={filtered == "عمومي" ? "active-general" : ""}
+            onClick={() => setFiltered("عمومي")}
           >
             عمومي
           </div>
@@ -101,60 +102,25 @@ export const Doctors = () => {
         </>
       ) : (
         <div className="doctor-Container">
-          {(filtered === "All" || filtered === "inner") && (
-            <DoctorCard
-              Dname={doctor[0]?.doctor_name}
-              description={doctor[0]?.description}
-              specialization={doctor[0]?.specialization}
-              borderColor="#1b5fb2"
-              backgroundColor="#eef2f9"
-            ></DoctorCard>
-          )}
-          {(filtered === "All" || filtered === "pediatric") && (
-            <DoctorCard
-              Dname={doctor[3]?.doctor_name}
-              description={doctor[3]?.description}
-              specialization={doctor[3]?.specialization}
-              borderColor="orange"
-              backgroundColor="#f4eacf"
-            ></DoctorCard>
-          )}
-          {(filtered === "All" || filtered === "women") && (
-            <DoctorCard
-              Dname={doctor[1]?.doctor_name}
-              description={doctor[1]?.description}
-              specialization={doctor[1]?.specialization}
-              borderColor="#6FAE2E"
-              backgroundColor="#F3F8EE"
-            ></DoctorCard>
-          )}
-          {(filtered === "All" || filtered === "waves") && (
-            <DoctorCard
-              Dname={doctor[2]?.doctor_name}
-              description={doctor[2]?.description}
-              specialization={doctor[2]?.specialization}
-              borderColor="#C0392B"
-              backgroundColor="#FAEFEE"
-            ></DoctorCard>
-          )}
-          {(filtered === "All" || filtered === "dentist") && (
-            <DoctorCard
-              Dname={doctor[4]?.doctor_name}
-              description={doctor[4]?.description}
-              specialization={doctor[4]?.specialization}
-              borderColor="#8E44AD"
-              backgroundColor="#F6F0F8"
-            ></DoctorCard>
-          )}
-          {(filtered === "All" || filtered === "general") && (
-            <DoctorCard
-              Dname={doctor[5]?.doctor_name}
-              description={doctor[5]?.description}
-              specialization={doctor[5]?.specialization}
-              borderColor="#2C3E50"
-              backgroundColor="#EEF3F9"
-            ></DoctorCard>
-          )}
+          {doctor
+            .filter((doc) => {
+              if (filtered === "All") return true;
+              return doc.specialization === filtered;
+            })
+
+            .map((doc) => {
+              console.log("doc", doc);
+              return (
+                <DoctorCard
+                  key={doc.id}
+                  Dname={doc.doctor_name}
+                  description={doc.description}
+                  specialization={doc.specialization}
+                  borderColor={doc.border_color}
+                  backgroundColor={doc.background_color}
+                />
+              );
+            })}
         </div>
       )}
     </div>

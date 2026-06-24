@@ -10,6 +10,7 @@
 {
   /* <i class="fa-solid fa-phone"></i> */
 }
+import { supabase } from "../utils/supabase";
 import Button from "@mui/material/Button";
 import Icon from "@mui/material/Icon";
 import "./Contact.css";
@@ -23,7 +24,7 @@ export const Contacts = () => {
 
   const handlsubmit = async (e) => {
     e.preventDefault();
-    const { error } = await supabase.from("Booking").insert({
+    const { error } = await supabase.from("Messages").insert({
       name,
       email,
       message,
@@ -33,6 +34,9 @@ export const Contacts = () => {
       console.log("Error booking appointment:", error);
       return;
     }
+    setName("");
+    setEmail("");
+    setMessage("");
   };
   return (
     <div id="contact">
@@ -97,6 +101,7 @@ export const Contacts = () => {
 
           <div className="contact-message">
             <TextField
+              value={name}
               onChange={(e) => setName(e.target.value)}
               required
               label="المستخدم اسم"
@@ -105,7 +110,8 @@ export const Contacts = () => {
               sx={{ width: "90%", margin: "0px auto" }}
             />
             <TextField
-              onChange={() => setEmail(e.target.value)}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               required
               label="البريد الإلكتروني"
               type="email"
@@ -113,7 +119,8 @@ export const Contacts = () => {
               sx={{ width: "90%", margin: "0px auto", textAlign: "right" }}
             />
             <textarea
-              onChange={() => setMessage(e.target.value)}
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
               required
               // placeholder="الرسالة"
               style={{

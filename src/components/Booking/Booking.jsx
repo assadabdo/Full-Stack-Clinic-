@@ -67,6 +67,11 @@ export const Booking = () => {
     }).then(() => {
       navigate("/");
     });
+    setPatientName("");
+    setDoctorName("");
+    setPhoneNumber("");
+    setDate(null);
+    setNotes("");
   };
 
   useEffect(() => {
@@ -94,6 +99,7 @@ export const Booking = () => {
 
           <div className="contact-message">
             <TextField
+              value={patient_name}
               required
               onChange={(e) => setPatientName(e.target.value)}
               label="اسم المريض "
@@ -102,6 +108,7 @@ export const Booking = () => {
               sx={{ width: "90%", margin: "0px auto" }}
             />
             <TextField
+              value={phone_number}
               required
               onChange={(e) => setPhoneNumber(e.target.value)}
               label="    ( واتساب) رقم الجوال"
@@ -112,34 +119,21 @@ export const Booking = () => {
             <TextField
               required
               select
+              value={doctor_name}
               onChange={(e) => handleDoctorChange(e.target.value)}
-              label="اسم الطبيب "
-              // type="text"
-              // id="outlined-password-input"
+              label="اسم الطبيب"
               sx={{ width: "90%", margin: "0px auto" }}
             >
-              <MenuItem value={doctor[0]?.doctor_name}>
-                {doctor[0]?.doctor_name}
-              </MenuItem>
-              <MenuItem value={doctor[1]?.doctor_name}>
-                {doctor[1]?.doctor_name}
-              </MenuItem>
-              <MenuItem value={doctor[2]?.doctor_name}>
-                {doctor[2]?.doctor_name}
-              </MenuItem>
-              <MenuItem value={doctor[3]?.doctor_name}>
-                {doctor[3]?.doctor_name}
-              </MenuItem>
-              <MenuItem value={doctor[4]?.doctor_name}>
-                {doctor[4]?.doctor_name}
-              </MenuItem>
-              <MenuItem value={doctor[5]?.doctor_name}>
-                {doctor[5]?.doctor_name}
-              </MenuItem>
+              {doctor.map((doc) => (
+                <MenuItem key={doc.id} value={doc.doctor_name}>
+                  {doc.doctor_name}
+                </MenuItem>
+              ))}
             </TextField>
 
             <div className="booking-date">
               <DatePicker
+                value={date}
                 required
                 selected={date}
                 onChange={(d) => setDate(d)}
@@ -151,6 +145,7 @@ export const Booking = () => {
             </div>
 
             <TextField
+              value={notes}
               onChange={(e) => setNotes(e.target.value)}
               label="ملاحظات (اختياري)"
               type="text"

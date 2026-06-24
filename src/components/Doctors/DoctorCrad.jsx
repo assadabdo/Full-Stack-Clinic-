@@ -54,6 +54,7 @@ export const DoctorCard = ({
         handleCancel();
       } else {
         navigate("/booking");
+        setIsBooked(true);
       }
     } else {
       Swal.fire({
@@ -93,13 +94,16 @@ export const DoctorCard = ({
   return (
     <div
       className="doctor-card"
-      style={{ borderTop: `5px solid ${borderColor}` }}
+      style={{ borderTop: `5px solid ${borderColor?.replace(/"/g, "")}` }}
     >
       <div className="aligment">
         <h3 className="doctor-name"> د/ {Dname}</h3>
         <div
           className="specialization"
-          style={{ backgroundColor: backgroundColor, color: borderColor }}
+          style={{
+            backgroundColor: backgroundColor?.replace(/"/g, ""),
+            color: borderColor?.replace(/"/g, ""),
+          }}
         >
           {specialization}
         </div>
