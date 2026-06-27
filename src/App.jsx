@@ -10,6 +10,7 @@ import { Booking } from "./components/Booking/Booking";
 import { CreateAcount } from "./components/LogIn/CreateAcount";
 import Footer from "./components/Footer/Footer";
 import { supabase } from "./components/utils/supabase";
+import { Dashbord } from "./Dashbord/Dashbord";
 
 function App() {
   const [session, Setsession] = useState(null);
@@ -51,6 +52,7 @@ function App() {
         <Route path="/login" element={<Login></Login>} />
         <Route path="/booking" element={<Booking></Booking>} />
         <Route path="/createAcount" element={<CreateAcount></CreateAcount>} />
+        <Route path="/dashbord" element={<Dashbord></Dashbord>} />
       </Routes>
     </div>
   );

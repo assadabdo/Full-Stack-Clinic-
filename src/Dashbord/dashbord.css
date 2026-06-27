@@ -1,0 +1,23 @@
+.dashbord-container {
+  display: flex;
+  direction: ltr;
+}
+.side-container {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  border-right: 1px solid #ccc;
+}
+
+.side-container .clinic-managment {
+  font-weight: bold;
+  margin: 10px 10;
+}
+
+.side-container div {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px;
+}

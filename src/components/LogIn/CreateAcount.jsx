@@ -26,6 +26,20 @@ export const CreateAcount = () => {
     console.log("data", data);
 
     navigate("/");
+
+    const user = data.user;
+
+    const { error: profileError } = await supabase.from("Profile").insert({
+      email,
+      name,
+      role: "user",
+      user_id: user.id,
+    });
+
+    if (profileError) {
+      console.log("error creating profile", profileError);
+      return;
+    }
   };
 
   return (

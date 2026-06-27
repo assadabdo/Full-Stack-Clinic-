@@ -24,6 +24,24 @@ export const Login = () => {
     }
     console.log("data", data);
     navigate("/");
+
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    const { data: profileData, error: profileError } = await supabase
+      .from("Profile")
+      .select("*")
+      .eq("role", "admin")
+      .eq("user_id", user.id)
+      .single();
+    if (profileError) {
+      console.log("error getting profile", profileError);
+      return;
+    }
+
+    console.log("data", profileData);
+    navigate("/dashbord");
   };
 
   return (
