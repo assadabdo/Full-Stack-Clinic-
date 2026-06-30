@@ -131,8 +131,6 @@ Contributions are welcome! Please follow these steps:
 
 Planned features include:
 
-Admin Dashboard
-Doctor Dashboard
 Appointment management
 Email notifications
 Appointment reminders
