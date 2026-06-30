@@ -56,7 +56,7 @@ export const Contacts = () => {
             <div className="details">
               <span>هاتف</span>
               <span>249910054892+</span>
-              <span> الاحد - الخميس</span>
+              <span>يومياً من 8 صباحاً إلى 8 مساءً</span>
             </div>
           </div>
           <div className="email">
@@ -92,7 +92,7 @@ export const Contacts = () => {
             <div className="details">
               <span>ساعات العمل</span>
               <span>الأحد — الخميس</span>
-              <span>٨ صباحًا — ١٠ مساءً</span>
+              <span> 8 صباحًا — 8 مساءً </span>
             </div>
           </div>
         </div>
@@ -136,6 +136,7 @@ export const Contacts = () => {
               type="submit"
               variant="contained"
               sx={{
+                boxShadow: "2px 2px 1px black",
                 width: "90%",
                 borderRadius: "7px",
                 backgroundColor: "#1B3D6F",

@@ -85,7 +85,7 @@ export const Landing = () => {
       <div className="desc-boxes">
         <div>
           <span>+5000</span>
-          <span>مريض متعافيc</span>
+          <span>مريض متعافي</span>
         </div>
         <div>
           <span>+20</span>

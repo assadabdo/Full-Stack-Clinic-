@@ -25,8 +25,6 @@ export const CreateAcount = () => {
     }
     console.log("data", data);
 
-    navigate("/");
-
     const user = data.user;
 
     const { error: profileError } = await supabase.from("Profile").insert({
@@ -40,6 +38,7 @@ export const CreateAcount = () => {
       console.log("error creating profile", profileError);
       return;
     }
+    // navigate("/");
   };
 
   return (

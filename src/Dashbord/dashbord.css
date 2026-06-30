@@ -1,23 +1,486 @@
 .dashbord-container {
   display: flex;
   direction: ltr;
+  min-height: 100vh;
 }
+
 .side-container {
   display: flex;
   flex-direction: column;
-  width: 20%;
-  border-right: 1px solid #ccc;
+  width: 250px;
+  background-color: #1a1a2e;
+  color: white;
+  padding: 20px;
+  border-right: 1px solid #333;
 }
 
 .side-container .clinic-managment {
   font-weight: bold;
-  margin: 10px 10;
+  font-size: 18px;
+  margin-bottom: 30px;
+  padding: 10px;
 }
 
 .side-container div {
   width: 100%;
   display: flex;
   align-items: center;
+  gap: 15px;
+  margin: 5px 0;
+  padding: 12px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.side-container div:hover {
+  background-color: #16213e;
+}
+
+.side-container .active {
+  background-color: #0f3460;
+}
+
+.feed-container {
+  flex: 1;
+  padding: 30px;
+  background-color: #f5f5f5;
+}
+
+.feed-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.feed-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+.feed-count {
+  font-size: 14px;
+  color: #666;
+  background-color: #e0e0e0;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+.feed-actions {
+  display: flex;
   gap: 10px;
-  margin: 10px;
+  margin-bottom: 20px;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+.refresh-btn {
+  background-color: white;
+  color: #333;
+  border: 1px solid #ccc;
+}
+
+.refresh-btn:hover {
+  background-color: #f0f0f0;
+}
+
+.new-btn {
+  background-color: #0f3460;
+  color: white;
+}
+
+.new-btn:hover {
+  background-color: #16213e;
+}
+
+.table-container {
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.messages-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.messages-table thead {
+  background-color: #f8f9fa;
+}
+
+.messages-table th {
+  padding: 15px;
+  text-align: center;
+  font-weight: 600;
+  color: #333;
+  border-bottom: 2px solid #e0e0e0;
+}
+.messages-table th.email {
+  padding: 15px 30px;
+}
+
+.messages-table td {
+  padding: 15px;
+  border-bottom: 1px solid #e0e0e0;
+  color: #555;
+  text-align: center;
+}
+
+.messages-table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.messages-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.actions-cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 140px;
+  gap: 10px;
+}
+
+.icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.edit-btn {
+  background-color: #e3f2fd;
+  color: #1976d2;
+}
+
+.edit-btn:hover {
+  background-color: #bbdefb;
+}
+
+.delete-btn {
+  background-color: #ffebee;
+  color: #d32f2f;
+}
+
+.delete-btn:hover {
+  background-color: #ffcdd2;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.stat-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  background-color: #0f3460;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+}
+
+.stat-info h3 {
+  margin: 0 0 5px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.stat-info p {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.recent-activity {
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.recent-activity h2 {
+  margin: 0 0 20px 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.activity-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.activity-item:last-child {
+  border-bottom: none;
+}
+
+.activity-text {
+  color: #333;
+  font-size: 14px;
+}
+
+.activity-time {
+  color: #999;
+  font-size: 12px;
+}
+
+/* ===========================
+   Modal
+=========================== */
+/* ===========================
+   Modal Overlay
+=========================== */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(3px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 9999;
+}
+
+/* ===========================
+   Modal Box
+=========================== */
+
+.modal {
+  width: 550px;
+  max-width: 90%;
+
+  background: white;
+
+  border-radius: 15px;
+
+  padding: 30px;
+
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+
+  animation: modalFade 0.25s ease;
+}
+
+/* ===========================
+   Header
+=========================== */
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 25px;
+}
+
+.modal-header h2 {
+  margin: 0;
+  color: #1f2937;
+}
+
+.close-btn {
+  border: none;
+  background: transparent;
+
+  font-size: 22px;
+
+  cursor: pointer;
+
+  color: #666;
+
+  transition: 0.2s;
+}
+
+.close-btn:hover {
+  color: red;
+}
+
+/* ===========================
+   Body
+=========================== */
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+
+  gap: 15px;
+}
+
+.modal-body input,
+.modal-body select {
+  width: 100%;
+
+  padding: 12px 15px;
+
+  border: 1px solid #ddd;
+
+  border-radius: 8px;
+
+  font-size: 15px;
+
+  outline: none;
+
+  transition: 0.2s;
+}
+
+.modal-body input:focus,
+.modal-body select:focus {
+  border-color: #2563eb;
+
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* ===========================
+   Footer
+=========================== */
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+
+  gap: 10px;
+
+  margin-top: 30px;
+}
+
+.modal-footer button {
+  padding: 10px 20px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  font-size: 15px;
+
+  transition: 0.2s;
+}
+
+.modal-footer button:first-child {
+  background: #e5e7eb;
+  color: #333;
+}
+
+.modal-footer button:first-child:hover {
+  background: #d1d5db;
+}
+
+.modal-footer button:last-child {
+  background: #2563eb;
+  color: white;
+}
+
+.modal-footer button:last-child:hover {
+  background: #1d4ed8;
+}
+
+/* ===========================
+   Animation
+=========================== */
+
+@keyframes modalFade {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+/* last edit */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 1000;
+
+  /* Allow the whole overlay to scroll if needed */
+  overflow-y: auto;
+}
+
+.modal {
+  background: white;
+  width: 500px;
+  max-width: 90%;
+
+  border-radius: 10px;
+  padding: 20px;
+
+  /* Prevent the modal from being taller than the screen */
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+@media (max-width: 750px) {
+  .dashbord-container {
+    flex-direction: column;
+  }
+  .side-container {
+    width: 100%;
+    flex-direction: row;
+  }
+  .actions-cell {
+    height: 250px;
+  }
 }

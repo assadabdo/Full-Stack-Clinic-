@@ -122,6 +122,7 @@ export const DoctorCard = ({
           }
           variant="contained"
           sx={{
+            boxShadow: "2px 2px 1px #00000085",
             backgroundColor: "green",
             width: { xs: "70%", sm: "100%" },
             fontWeight: "bold",

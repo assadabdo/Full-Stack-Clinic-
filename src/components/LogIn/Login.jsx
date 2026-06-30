@@ -5,6 +5,7 @@ import { supabase } from "../utils/supabase";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export const Login = () => {
   const [email, Setemail] = useState("");
@@ -14,17 +15,18 @@ export const Login = () => {
   const handlsumbit = async (e) => {
     e.preventDefault();
 
-    const { error, data } = await supabase.auth.signInWithPassword({
+    const { error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
     if (error) {
-      console.log("error signinIn", error);
+      Swal.fire({
+        icon: "error",
+        title: "خطأ في تسجيل الدخول",
+        text: "البريد الإلكتروني أو كلمة المرور غير صحيحة",
+      });
       return;
     }
-    console.log("data", data);
-    navigate("/");
-
     const {
       data: { user },
     } = await supabase.auth.getUser();
@@ -33,15 +35,19 @@ export const Login = () => {
       .from("Profile")
       .select("*")
       .eq("role", "admin")
-      .eq("user_id", user.id)
-      .single();
+      .eq("user_id", user.id);
+    // .single();
     if (profileError) {
       console.log("error getting profile", profileError);
       return;
     }
 
-    console.log("data", profileData);
-    navigate("/dashbord");
+    if (profileData?.length > 0) {
+      navigate("/dashbord");
+      return;
+    } else {
+      navigate("/");
+    }
   };
 
   return (
