@@ -22,6 +22,13 @@ export const CreateAcount = () => {
     });
     if (error) {
       console.log("error signiingUp", error);
+
+      Swal.fire({
+        icon: "error",
+        title: "Signup failed",
+        text: error.message,
+      });
+
       return;
     }
     console.log("data", data);
@@ -45,7 +52,6 @@ export const CreateAcount = () => {
       title: "Check your email",
       text: "Verify your email before logging in",
     });
-    // navigate("/");
   };
 
   return (
