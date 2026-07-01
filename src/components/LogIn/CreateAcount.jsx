@@ -5,6 +5,7 @@ import { useState } from "react";
 import { supabase } from "../utils/supabase";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export const CreateAcount = () => {
   const [email, Setemail] = useState("");
@@ -38,6 +39,12 @@ export const CreateAcount = () => {
       console.log("error creating profile", profileError);
       return;
     }
+
+    Swal.fire({
+      icon: "info",
+      title: "Check your email",
+      text: "Verify your email before logging in",
+    });
     // navigate("/");
   };
 
