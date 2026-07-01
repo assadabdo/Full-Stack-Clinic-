@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { supabase } from "./components/utils/supabase";
 
-// Pages / Components
+// Components
 import Navbar from "./components/Navbar/Navbar";
 import { Landing } from "./components/Landing/Landing";
 import { Ourservices } from "./components/Oursevices/Ourservices";
@@ -15,12 +15,11 @@ import Footer from "./components/Footer/Footer";
 import { Dashbord } from "./Dashbord/Dashbord";
 
 function App() {
-  const navigate = useNavigate();
-
   const [session, setSession] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [role, setRole] = useState(null);
+  const [loading, setLoading] = useState(true);
 
+  // 🔐 Fetch user role from DB
   const getUserRole = async (userId) => {
     const { data, error } = await supabase
       .from("Profile")
@@ -36,28 +35,26 @@ function App() {
     return data?.role;
   };
 
+  // 🔐 Initial session check (runs once)
   useEffect(() => {
-    const initSession = async () => {
-      // Get current session from Supabase
+    const init = async () => {
       const { data } = await supabase.auth.getSession();
 
       const currentSession = data.session;
-      console.log("Current session:", currentSession);
       setSession(currentSession);
 
-      // If user exists, fetch role
       if (currentSession) {
         const userRole = await getUserRole(currentSession.user.id);
         setRole(userRole);
       }
 
-      // Stop loading after session check
       setLoading(false);
     };
 
-    initSession();
+    init();
   }, []);
 
+  // 🔐 Listen to login/logout changes
   useEffect(() => {
     const { data } = supabase.auth.onAuthStateChange(
       async (_event, newSession) => {
@@ -77,24 +74,19 @@ function App() {
     };
   }, []);
 
-  useEffect(() => {
-    if (loading) return;
-    if (!session) {
-      return;
-    }
-
-    if (role === "admin") {
-      navigate("/dashbord");
-    } else {
-      navigate("/");
-    }
-  }, [session, role, loading, navigate]);
-
+  // ⏳ Loading state
   if (loading) {
     return (
       <div style={{ textAlign: "center", marginTop: "50px" }}>Loading...</div>
     );
   }
+
+  // 🔐 Protected route for admin only
+  const AdminRoute = ({ children }) => {
+    if (!session) return <Navigate to="/login" />;
+    if (role !== "admin") return <Navigate to="/" />;
+    return children;
+  };
 
   return (
     <div>
@@ -112,11 +104,18 @@ function App() {
             </>
           }
         />
-
         <Route path="/login" element={<Login />} />
         <Route path="/createAcount" element={<CreateAcount />} />
         <Route path="/booking" element={<Booking />} />
-        <Route path="/dashbord" element={<Dashbord />} />
+        <Route
+          path="/dashbord"
+          element={
+            <AdminRoute>
+              <Dashbord />
+            </AdminRoute>
+          }
+        />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </div>
   );
