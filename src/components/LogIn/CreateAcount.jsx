@@ -49,9 +49,12 @@ export const CreateAcount = () => {
 
     Swal.fire({
       icon: "info",
-      title: "Check your email",
-      text: "Verify your email before logging in",
+      title: "تحقق من بريدك الإلكتروني",
+      text: "يرجى تأكيد البريد الإلكتروني قبل تسجيل الدخول",
     });
+    Setemail("");
+    Setpassword("");
+    Setname("");
   };
 
   return (

@@ -56,7 +56,7 @@ export const Contacts = () => {
             <div className="details">
               <span>هاتف</span>
               <span>249910054892+</span>
-              <span>يومياً من 8 صباحاً إلى 8 مساءً</span>
+              <span>يومياً من 7 صباحاً إلى 10 مساءً</span>
             </div>
           </div>
           <div className="email">
@@ -92,7 +92,7 @@ export const Contacts = () => {
             <div className="details">
               <span>ساعات العمل</span>
               <span>الأحد — الخميس</span>
-              <span> 8 صباحًا — 8 مساءً </span>
+              <span>10 صباحًا — 7 مساءً </span>
             </div>
           </div>
         </div>

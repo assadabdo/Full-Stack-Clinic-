@@ -48,6 +48,8 @@ export const Login = () => {
     } else {
       navigate("/");
     }
+    Setemail("");
+    Setpassword("");
   };
 
   return (
