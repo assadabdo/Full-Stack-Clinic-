@@ -81,7 +81,13 @@ export const Bookings = () => {
     if (error) console.log("error", error);
 
     closeModal();
-    FetchDoctors();
+    const { data, error: er } = await supabase.from("Booking").select("*");
+
+    if (er) {
+      console.log("error", er);
+    } else {
+      setBookings(data);
+    }
   };
 
   // DELETE
@@ -90,7 +96,13 @@ export const Bookings = () => {
 
     if (error) console.log("error", error);
 
-    FetchDoctors();
+    const { data, error: err } = await supabase.from("Booking").select("*");
+
+    if (err) {
+      console.log("error", err);
+    } else {
+      setBookings(data);
+    }
   };
 
   // OPEN CREATE
