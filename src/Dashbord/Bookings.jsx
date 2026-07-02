@@ -5,6 +5,7 @@ import { supabase } from "../components/utils/supabase";
 export const Bookings = () => {
   const [Bookings, setBookings] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [filterDate, setFilterDate] = useState("");
 
   const [isEditMode, setIsEditMode] = useState(false);
   const [editingId, setEditingId] = useState(null);
@@ -14,6 +15,11 @@ export const Bookings = () => {
   const [phone_number, setPhoneNumber] = useState("");
   const [date, setDate] = useState("");
   const [notes, setNotes] = useState("");
+
+  // Filtering
+  const filteredBookings = filterDate
+    ? Bookings.filter((b) => b.date === filterDate)
+    : Bookings;
 
   // FETCH
   const FetchDoctors = async () => {
@@ -127,15 +133,25 @@ export const Bookings = () => {
       </div>
 
       <div className="feed-actions">
-        <button className="action-btn refresh-btn" onClick={FetchDoctors}>
-          <i className="fa-solid fa-rotate-right"></i>
-          Refresh
-        </button>
-
-        <button onClick={addBooking} className="action-btn new-btn">
-          <i className="fa-solid fa-plus"></i>
-          New
-        </button>
+        <div style={{ display: "flex", gap: "8px" }}>
+          {" "}
+          <button className="action-btn refresh-btn" onClick={FetchDoctors}>
+            <i className="fa-solid fa-rotate-right"></i>
+            Refresh
+          </button>
+          <button onClick={addBooking} className="action-btn new-btn">
+            <i className="fa-solid fa-plus"></i>
+            New
+          </button>
+        </div>
+        <div className="filterDate">
+          <input
+            type="date"
+            value={filterDate}
+            onChange={(e) => setFilterDate(e.target.value)}
+          />
+          <button onClick={() => setFilterDate("")}>Clear Filter</button>
+        </div>
       </div>
 
       <div className="table-container">
@@ -152,7 +168,7 @@ export const Bookings = () => {
           </thead>
 
           <tbody>
-            {Bookings.map((booking) => (
+            {filteredBookings.map((booking) => (
               <tr key={booking.id}>
                 <td>{booking.patient_name}</td>
                 <td>{booking.date}</td>

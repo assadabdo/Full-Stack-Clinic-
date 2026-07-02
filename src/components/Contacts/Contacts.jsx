@@ -31,7 +31,7 @@ export const Contacts = () => {
     });
 
     if (error) {
-      console.log("Error booking appointment:", error);
+      console.log("Error sending message:", error);
       return;
     }
     setName("");
@@ -81,8 +81,8 @@ export const Contacts = () => {
             </span>
             <div className="details">
               <span>العنوان</span>
-              <span>الدامر غرب الاستاد</span>
-              <span>تقاطع الشمالية</span>
+              <span>الدامر</span>
+              <span>غرب الاستاد</span>
             </div>
           </div>
           <div className="working-hours">
@@ -91,8 +91,8 @@ export const Contacts = () => {
             </span>
             <div className="details">
               <span>ساعات العمل</span>
-              <span>الأحد — الخميس</span>
-              <span>يومياً من 7 صباحاً إلى 10 مساءً</span>
+              <span> يومياً</span>
+              <span>من 7 صباحاً إلى 10 مساءً</span>
             </div>
           </div>
         </div>

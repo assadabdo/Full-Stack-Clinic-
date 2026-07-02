@@ -88,15 +88,15 @@ export const Landing = () => {
           <span>مريض متعافي</span>
         </div>
         <div>
-          <span>+20</span>
+          <span>+10</span>
           <span> طبيب متخصص</span>
         </div>
         <div>
-          <span>+15</span>
+          <span>+8</span>
           <span>قسم طبي</span>
         </div>
         <div className="hide">
-          <span>24/7</span>
+          <span>15/7</span>
           <span>خدمة مستمرة</span>
         </div>
       </div>

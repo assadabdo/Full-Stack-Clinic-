@@ -68,6 +68,19 @@
   padding: 4px 12px;
   border-radius: 20px;
 }
+.filterDate button {
+  width: 100px;
+  height: 40px;
+  border-radius: 6px;
+  background-color: #165487;
+  color: white;
+}
+.filterDate input {
+  height: 40px;
+  border-radius: 5px;
+  padding: 5px;
+  margin-right: 10px;
+}
 
 .feed-actions {
   display: flex;
