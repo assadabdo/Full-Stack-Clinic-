@@ -24,10 +24,17 @@ export const Contacts = () => {
 
   const handlsubmit = async (e) => {
     e.preventDefault();
+
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    console.log("User:", user);
     const { error } = await supabase.from("Messages").insert({
       name,
       email,
       message,
+      user_id: user.id,
     });
 
     if (error) {

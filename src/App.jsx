@@ -61,7 +61,7 @@ function App() {
     const { data } = supabase.auth.onAuthStateChange(
       async (_event, newSession) => {
         setSession(newSession);
-
+        console.log("Session changed:", newSession);
         if (newSession) {
           const userRole = await getUserRole(newSession.user.id);
           setRole(userRole);

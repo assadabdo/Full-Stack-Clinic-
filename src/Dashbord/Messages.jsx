@@ -171,7 +171,7 @@ export const Messages = () => {
                   placeholder="Email"
                 />
 
-                <input
+                <textarea
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   type="text"
