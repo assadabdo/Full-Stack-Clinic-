@@ -3,9 +3,12 @@ import "./dashbord.css";
 import { supabase } from "../components/utils/supabase";
 import { useState } from "react";
 import { useEffect } from "react";
+import { Skeleton } from "@mui/material";
+import { Box } from "@mui/material";
 
 export const Messages = () => {
   const [messages, setMessages] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const [showModal, setShowModal] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
@@ -16,13 +19,14 @@ export const Messages = () => {
   const [message, setMessage] = useState("");
 
   const FetchMessages = async () => {
+    setLoading(true);
     const { data, error } = await supabase.from("Messages").select("*");
-
     if (error) {
       console.log("error", error);
     } else {
       setMessages(data);
     }
+    setLoading(false);
   };
 
   // OPEN EDIT
@@ -32,8 +36,8 @@ export const Messages = () => {
 
     setEditingId(message.id);
     setName(message.name);
-    setEmail(doctor.email);
-    setMessage(doctor.message);
+    setEmail(message.email);
+    setMessage(message.message);
   };
 
   // DELETE
@@ -99,7 +103,7 @@ export const Messages = () => {
       </div>
 
       <div className="feed-actions">
-        <button className="action-btn refresh-btn" onClick={FetchMessages()}>
+        <button className="action-btn refresh-btn" onClick={FetchMessages}>
           <i className="fa-solid fa-rotate-right"></i>
           Refresh
         </button>
@@ -110,39 +114,64 @@ export const Messages = () => {
       </div>
 
       <div className="table-container">
-        <table className="messages-table">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Message</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {messages.map((msg) => (
-              <tr key={msg.id}>
-                <td>{msg.name}</td>
-                <td>{msg.email}</td>
-                <td>{msg.message}</td>
-                <td className="actions-cell">
-                  <button
-                    className="icon-btn edit-btn"
-                    onClick={() => openEditModal(msg)}
-                  >
-                    <i className="fa-solid fa-pencil"></i>
-                  </button>
-                  <button
-                    className="icon-btn delete-btn"
-                    onClick={() => handleDelet(msg.id)}
-                  >
-                    <i className="fa-solid fa-trash"></i>
-                  </button>
-                </td>
-              </tr>
+        {loading ? (
+          <Box sx={{ width: "100%", p: 2 }}>
+            {/* Table Header */}
+            <Skeleton variant="rectangular" height={50} />
+
+            {/* Table Rows */}
+            {[...Array(6)].map((_, index) => (
+              <Box
+                key={index}
+                sx={{
+                  display: "flex",
+                  gap: 2,
+                  mt: 2,
+                  alignItems: "center",
+                }}
+              >
+                <Skeleton variant="text" width="20%" height={40} />
+                <Skeleton variant="text" width="25%" height={40} />
+                <Skeleton variant="text" width="35%" height={40} />
+                <Skeleton variant="rounded" width={90} height={35} />
+              </Box>
             ))}
-          </tbody>
-        </table>
+          </Box>
+        ) : (
+          <table className="messages-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Message</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {messages.map((msg) => (
+                <tr key={msg.id}>
+                  <td>{msg.name}</td>
+                  <td>{msg.email}</td>
+                  <td>{msg.message}</td>
+                  <td className="actions-cell">
+                    <button
+                      className="icon-btn edit-btn"
+                      onClick={() => openEditModal(msg)}
+                    >
+                      <i className="fa-solid fa-pencil"></i>
+                    </button>
+                    <button
+                      className="icon-btn delete-btn"
+                      onClick={() => handleDelet(msg.id)}
+                    >
+                      <i className="fa-solid fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
       {showModal && (
         <div className="modal-overlay">
@@ -180,7 +209,9 @@ export const Messages = () => {
               </div>
 
               <div className="modal-footer">
-                <button onClick={() => setShowModal(false)}>Cancel</button>
+                <button type="button" onClick={() => setShowModal(false)}>
+                  Cancel
+                </button>
 
                 <button type="submit">
                   {isEditMode ? "Update" : "Create"}
