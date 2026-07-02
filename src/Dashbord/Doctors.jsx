@@ -2,11 +2,14 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import "./dashbord.css";
 import { supabase } from "../components/utils/supabase";
+import { Skeleton } from "@mui/material";
+import { Box } from "@mui/material";
 
 export const Doctors = () => {
   const [showModal, setShowModal] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
   const [editingId, setEditingId] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const [doctor_name, setDoctorName] = useState("");
   const [specialization, setSpecialization] = useState("");
@@ -39,6 +42,7 @@ export const Doctors = () => {
 
   // FETCH
   const FetchDoctors = async () => {
+    setLoading(true);
     const { data, error } = await supabase.from("doctor_schedule").select("*");
 
     if (error) {
@@ -46,6 +50,7 @@ export const Doctors = () => {
     } else {
       setDoctorInfo(data);
     }
+    setLoading(false);
   };
 
   // DELETE
@@ -129,45 +134,72 @@ export const Doctors = () => {
       </div>
 
       <div className="table-container">
-        <table className="messages-table">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Specialty</th>
-              <th>description</th>
-              <th>working-Days</th>
-              <th>Id</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {doctorInfo.map((doctor) => (
-              <tr key={doctor.id}>
-                <td>{doctor.doctor_name}</td>
-                <td>{doctor.specialization}</td>
-                <td>{doctor.description}</td>
-                <td>
-                  {doctor.working_days?.map((day) => days[day]).join(", ")}
-                </td>
-                <td>{doctor.id}</td>
-                <td className="actions-cell">
-                  <button
-                    className="icon-btn edit-btn"
-                    onClick={() => openEditModal(doctor)}
-                  >
-                    <i className="fa-solid fa-pencil"></i>
-                  </button>
-                  <button
-                    className="icon-btn delete-btn"
-                    onClick={() => handleDelet(doctor.id)}
-                  >
-                    <i className="fa-solid fa-trash"></i>
-                  </button>
-                </td>
-              </tr>
+        {loading ? (
+          <Box sx={{ width: "100%", p: 2 }}>
+            {/* Table Header */}
+            <Skeleton variant="rectangular" height={50} />
+
+            {/* Table Rows */}
+            {[...Array(6)].map((_, index) => (
+              <Box
+                key={index}
+                sx={{
+                  display: "flex",
+                  gap: 2,
+                  mt: 2,
+                  alignItems: "center",
+                }}
+              >
+                <Skeleton variant="text" width="15%" height={40} />
+                <Skeleton variant="text" width="15%" height={40} />
+                <Skeleton variant="text" width="20%" height={40} />
+                <Skeleton variant="text" width="15%" height={40} />
+                <Skeleton variant="text" width="10%" height={40} />
+                <Skeleton variant="rounded" width={90} height={35} />
+              </Box>
             ))}
-          </tbody>
-        </table>
+          </Box>
+        ) : (
+          <table className="messages-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Specialty</th>
+                <th>description</th>
+                <th>working-Days</th>
+                <th>Id</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {doctorInfo.map((doctor) => (
+                <tr key={doctor.id}>
+                  <td>{doctor.doctor_name}</td>
+                  <td>{doctor.specialization}</td>
+                  <td>{doctor.description}</td>
+                  <td>
+                    {doctor.working_days?.map((day) => days[day]).join(", ")}
+                  </td>
+                  <td>{doctor.id}</td>
+                  <td className="actions-cell">
+                    <button
+                      className="icon-btn edit-btn"
+                      onClick={() => openEditModal(doctor)}
+                    >
+                      <i className="fa-solid fa-pencil"></i>
+                    </button>
+                    <button
+                      className="icon-btn delete-btn"
+                      onClick={() => handleDelet(doctor.id)}
+                    >
+                      <i className="fa-solid fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
       {showModal && (
         <div className="modal-overlay">

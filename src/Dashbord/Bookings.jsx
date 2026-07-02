@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./dashbord.css";
 import { supabase } from "../components/utils/supabase";
+import { Skeleton } from "@mui/material";
+import { Box } from "@mui/material";
 
 export const Bookings = () => {
   const [Bookings, setBookings] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [filterDate, setFilterDate] = useState("");
 
@@ -23,6 +26,7 @@ export const Bookings = () => {
 
   // FETCH
   const FetchDoctors = async () => {
+    setLoading(true);
     const { data, error } = await supabase.from("Booking").select("*");
 
     if (error) {
@@ -30,6 +34,7 @@ export const Bookings = () => {
     } else {
       setBookings(data);
     }
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -155,46 +160,73 @@ export const Bookings = () => {
       </div>
 
       <div className="table-container">
-        <table className="messages-table">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Date</th>
-              <th>Doctor</th>
-              <th>Phone</th>
-              <th>Notes</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
+        {loading ? (
+          <Box sx={{ width: "100%", p: 2 }}>
+            {/* Table Header */}
+            <Skeleton variant="rectangular" height={50} />
 
-          <tbody>
-            {filteredBookings.map((booking) => (
-              <tr key={booking.id}>
-                <td>{booking.patient_name}</td>
-                <td>{booking.date}</td>
-                <td>{booking.doctor_name}</td>
-                <td>{booking.phone_number}</td>
-                <td>{booking.notes}</td>
-
-                <td className="actions-cell">
-                  <button
-                    onClick={() => openEditModal(booking)}
-                    className="icon-btn edit-btn"
-                  >
-                    <i className="fa-solid fa-pencil"></i>
-                  </button>
-
-                  <button
-                    onClick={() => handleDelet(booking.id)}
-                    className="icon-btn delete-btn"
-                  >
-                    <i className="fa-solid fa-trash"></i>
-                  </button>
-                </td>
-              </tr>
+            {/* Table Rows */}
+            {[...Array(6)].map((_, index) => (
+              <Box
+                key={index}
+                sx={{
+                  display: "flex",
+                  gap: 2,
+                  mt: 2,
+                  alignItems: "center",
+                }}
+              >
+                <Skeleton variant="text" width="15%" height={40} />
+                <Skeleton variant="text" width="15%" height={40} />
+                <Skeleton variant="text" width="15%" height={40} />
+                <Skeleton variant="text" width="15%" height={40} />
+                <Skeleton variant="text" width="20%" height={40} />
+                <Skeleton variant="rounded" width={90} height={35} />
+              </Box>
             ))}
-          </tbody>
-        </table>
+          </Box>
+        ) : (
+          <table className="messages-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Doctor</th>
+                <th>Phone</th>
+                <th>Notes</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {filteredBookings.map((booking) => (
+                <tr key={booking.id}>
+                  <td>{booking.patient_name}</td>
+                  <td>{booking.date}</td>
+                  <td>{booking.doctor_name}</td>
+                  <td>{booking.phone_number}</td>
+                  <td>{booking.notes}</td>
+
+                  <td className="actions-cell">
+                    <button
+                      onClick={() => openEditModal(booking)}
+                      className="icon-btn edit-btn"
+                    >
+                      <i className="fa-solid fa-pencil"></i>
+                    </button>
+
+                    <button
+                      onClick={() => handleDelet(booking.id)}
+                      className="icon-btn delete-btn"
+                    >
+                      <i className="fa-solid fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
 
       {/* MODAL */}
