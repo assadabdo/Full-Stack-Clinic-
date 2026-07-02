@@ -21,7 +21,7 @@ export const Landing = () => {
           </div>
           <div className="intro">
             <span>مركز</span>
-            <span>العاليابي</span> الطبي المتخصص
+            <span>العاليابي</span> الطبي
           </div>
 
           <div className="desc">
@@ -92,7 +92,6 @@ export const Landing = () => {
           <span> طبيب متخصص</span>
         </div>
         <div>
-          {" "}
           <span>+15</span>
           <span>قسم طبي</span>
         </div>

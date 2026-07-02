@@ -92,7 +92,7 @@ export const Contacts = () => {
             <div className="details">
               <span>ساعات العمل</span>
               <span>الأحد — الخميس</span>
-              <span>10 صباحًا — 7 مساءً </span>
+              <span>يومياً من 7 صباحاً إلى 10 مساءً</span>
             </div>
           </div>
         </div>
@@ -104,7 +104,7 @@ export const Contacts = () => {
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
-              label="المستخدم اسم"
+              label="اسم المستخدم"
               type="text"
               id="outlined-password-input"
               sx={{ width: "90%", margin: "0px auto" }}

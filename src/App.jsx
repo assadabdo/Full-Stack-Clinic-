@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { supabase } from "./components/utils/supabase";
+import { Skeleton } from "@mui/material";
+import { Box } from "@mui/material";
 
 // Components
 import Navbar from "./components/Navbar/Navbar";
@@ -77,7 +79,23 @@ function App() {
   // ⏳ Loading state
   if (loading) {
     return (
-      <div style={{ textAlign: "center", marginTop: "50px" }}>Loading...</div>
+      <Box
+        sx={{
+          width: "100vw",
+          height: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          gap: 2,
+          padding: 3,
+          boxSizing: "border-box",
+        }}
+      >
+        <Skeleton variant="rectangular" height={80} /> {/* Navbar */}
+        <Skeleton variant="rectangular" height={200} /> {/* Hero */}
+        <Skeleton variant="rectangular" height={150} /> {/* Section */}
+        <Skeleton variant="rectangular" height={150} /> {/* Section */}
+        <Skeleton variant="rectangular" height={100} /> {/* Footer */}
+      </Box>
     );
   }
 
