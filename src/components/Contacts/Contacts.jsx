@@ -10,6 +10,7 @@
 {
   /* <i class="fa-solid fa-phone"></i> */
 }
+import Swal from "sweetalert2";
 import { supabase } from "../utils/supabase";
 import Button from "@mui/material/Button";
 import Icon from "@mui/material/Icon";
@@ -30,6 +31,16 @@ export const Contacts = () => {
     } = await supabase.auth.getUser();
 
     console.log("User:", user);
+
+    if (!user) {
+      Swal.fire({
+        title: "تحتاج لتسجيل الدخول اولاً لارسال الرسالة",
+        icon: "error",
+        confirmButtonText: "حسنا",
+      });
+      return;
+    }
+
     const { error } = await supabase.from("Messages").insert({
       name,
       email,
@@ -39,11 +50,17 @@ export const Contacts = () => {
 
     if (error) {
       console.log("Error sending message:", error);
+
       return;
     }
     setName("");
     setEmail("");
     setMessage("");
+    Swal.fire({
+      title: "تم ارسال الرسالة",
+      icon: "success",
+      confirmButtonText: "حسنا",
+    });
   };
   return (
     <div id="contact">
