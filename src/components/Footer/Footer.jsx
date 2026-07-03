@@ -52,21 +52,16 @@ const Footer = () => {
           <div className="footer-section">
             <h3 className="footer-heading">خدماتنا</h3>
             <div className="footer-links">
-              <a href="#" className="footer-link">
-                الطب الباطني
-              </a>
-              <a href="#" className="footer-link">
-                طب الأطفال
-              </a>
-              <a href="#" className="footer-link">
-                طب الأسنان
-              </a>
-              <a href="#" className="footer-link">
-                نساء وتوليد
-              </a>
-              <a href="#" className="footer-link">
-                الموجات الصوتية
-              </a>
+              <span className="footer-link">طبيب عمومي</span>
+              <span className="footer-link">طبيب أسنان</span>
+              <span className="footer-link">أخصائي الباطنية</span>
+              <span className="footer-link">اخصائي النساء والتوليد</span>
+              <span className="footer-link">أخصائي الأطفال</span>
+              <span className="footer-link">أخصائي الموجات الصوتية</span>
+              <span className="footer-link">معمل طبي متكامل</span>
+              <span className="footer-link">عنبر تمريض</span>
+              <span className="footer-link">عمليات جراحية صغرى</span>
+              <span className="footer-link">صيدلية داخلية</span>
             </div>
           </div>
 
