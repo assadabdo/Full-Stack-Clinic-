@@ -79,7 +79,7 @@ const Footer = () => {
               </div>
               <div className="contact-item">
                 <Email className="contact-icon" />
-                <p>Aliabicenter@gmail.com</p>
+                <p>info@aliabicenter.com</p>
               </div>
             </div>
 

@@ -55,15 +55,15 @@ export const Doctors = () => {
           </div>
           <div
             style={{ color: "orange" }}
-            className={filtered == "أطفال" ? "active-pediatric" : ""}
-            onClick={() => setFiltered("أطفال")}
+            className={filtered == "الأطفال" ? "active-pediatric" : ""}
+            onClick={() => setFiltered("الأطفال")}
           >
             الأطفال
           </div>
           <div
             style={{ color: "#8E44AD" }}
-            className={filtered == "أسنان" ? "active-dentist" : ""}
-            onClick={() => setFiltered("أسنان")}
+            className={filtered == "الأسنان" ? "active-dentist" : ""}
+            onClick={() => setFiltered("الأسنان")}
           >
             الأسنان
           </div>
@@ -72,22 +72,22 @@ export const Doctors = () => {
             className={filtered == "نساء وتوليد" ? "active-women" : ""}
             onClick={() => setFiltered("نساء وتوليد")}
           >
-            نساء وتوليد
+            النساء وتوليد
           </div>
           <div
             style={{ color: "#C0392B" }}
-            className={filtered == "موجات" ? "active-waves" : ""}
-            onClick={() => setFiltered("موجات")}
+            className={filtered == "الموجات الصوتية" ? "active-waves" : ""}
+            onClick={() => setFiltered("الموجات الصوتية")}
           >
             {" "}
-            موجات
+            الموجات الصوتية
           </div>
           <div
             style={{ color: "#2F4052" }}
-            className={filtered == "عمومي" ? "active-general" : ""}
-            onClick={() => setFiltered("عمومي")}
+            className={filtered == "طبيب عمومي" ? "active-general" : ""}
+            onClick={() => setFiltered("طبيب عمومي")}
           >
-            عمومي
+            الطبيب العمومي
           </div>
         </div>
       </div>

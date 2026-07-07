@@ -1,15 +1,3 @@
-{
-  /* <i class="fa-solid fa-clock"></i> */
-}
-{
-  /* <i class="fa-solid fa-location-dot"></i> */
-}
-{
-  /* <i class="fa-solid fa-envelope"></i>  email */
-}
-{
-  /* <i class="fa-solid fa-phone"></i> */
-}
 import Swal from "sweetalert2";
 import { supabase } from "../utils/supabase";
 import Button from "@mui/material/Button";
@@ -92,7 +80,7 @@ export const Contacts = () => {
             </span>
             <div className="details">
               <span> البريد الإلكتروني</span>
-              <span>Aliabicenter@gmail.com</span>
+              <span>info@aliabicenter.com</span>
               <span>نرد خلال 24 ساعة</span>
             </div>
           </div>
