@@ -11,11 +11,13 @@ export const CreateAcount = () => {
   const [email, Setemail] = useState("");
   const [password, Setpassword] = useState("");
   const [name, Setname] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handlsumbit = async (e) => {
     e.preventDefault();
 
+    setLoading(true);
     const { error, data } = await supabase.auth.signUp({
       email,
       password,
@@ -28,7 +30,6 @@ export const CreateAcount = () => {
         title: "Signup failed",
         text: error.message,
       });
-
       return;
     }
     console.log("data", data);
@@ -55,6 +56,7 @@ export const CreateAcount = () => {
     Setemail("");
     Setpassword("");
     Setname("");
+    setLoading(false);
   };
 
   return (
@@ -93,6 +95,8 @@ export const CreateAcount = () => {
             <Button
               type="submit"
               variant="contained"
+              loading={loading}
+              loadingPosition="start"
               sx={{
                 width: "90%",
                 borderRadius: "7px",

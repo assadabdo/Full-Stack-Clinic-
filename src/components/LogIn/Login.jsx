@@ -10,10 +10,13 @@ import Swal from "sweetalert2";
 export const Login = () => {
   const [email, Setemail] = useState("");
   const [password, Setpassword] = useState("");
+  const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
 
   const handlsumbit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     const { error } = await supabase.auth.signInWithPassword({
       email,
@@ -50,6 +53,7 @@ export const Login = () => {
     }
     Setemail("");
     Setpassword("");
+    setLoading(false);
   };
 
   return (
@@ -77,6 +81,8 @@ export const Login = () => {
             <Button
               variant="contained"
               type="submit"
+              loading={loading}
+              loadingPosition="start"
               sx={{
                 width: "90%",
                 borderRadius: "7px",

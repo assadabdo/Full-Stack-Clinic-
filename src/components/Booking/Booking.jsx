@@ -19,6 +19,7 @@ export const Booking = () => {
   const [doctor, setDoctor] = useState([]);
 
   const [workingDays, setWorkingDays] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -46,6 +47,7 @@ export const Booking = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const { data: userData } = await supabase.auth.getUser();
     const { error } = await supabase.from("Booking").insert({
       user_id: userData.user.id,
@@ -79,6 +81,7 @@ export const Booking = () => {
     setPhoneNumber("");
     setDate(null);
     setNotes("");
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -163,6 +166,8 @@ export const Booking = () => {
             <Button
               type="submit"
               variant="contained"
+              loading={loading}
+              loadingPosition="start"
               sx={{
                 width: "90%",
                 borderRadius: "7px",
