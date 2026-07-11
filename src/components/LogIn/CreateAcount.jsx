@@ -48,14 +48,15 @@ export const CreateAcount = () => {
       return;
     }
 
-    Swal.fire({
-      icon: "info",
-      title: "تحقق من بريدك الإلكتروني",
-      text: "يرجى تأكيد البريد الإلكتروني قبل تسجيل الدخول",
-    });
-    Setemail("");
-    Setpassword("");
-    Setname("");
+    // Swal.fire({
+    //   icon: "info",
+    //   title: "تحقق من بريدك الإلكتروني",
+    //   text: "يرجى تأكيد البريد الإلكتروني قبل تسجيل الدخول",
+    // });
+    // Setemail("");
+    // Setpassword("");
+    // Setname("");
+    navigate("/");
     setLoading(false);
   };
 
